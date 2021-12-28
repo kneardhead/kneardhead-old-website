@@ -1,0 +1,83 @@
+Now what about \emph{multiplying the Angular Momentum Vector with Velocity}?
+
+It is good actually, because $\vec{L}$ is perpendicular to the plane of orbit, $\vec{v}$ is tangent to the path (ellipse), the $\vec{L} \times  \vec{v}$ will yield a vector that is  \emph{Normal} to the  \emph{Tangent}. Or normal to the Path itself. 
+
+\[ 
+    \vec{L} \times \dot{\vec{r}} = \left( m \vec{r} \times \dot{\vec{r}} \right) \times \dot{\vec{r}} 
+\]
+\[ 
+    \vec{L}\times \dot{\vec{r}} =  - \dot{\vec{r}} \times  \left( m \vec{r} \times  \dot{\vec{r}} \right) 
+\]
+\[ 
+    = -m \vec{r} \left( \dot{\vec{r}} \cdot  \dot{\vec{r}} \right) +  \dot{\vec{r}} \left( \dot{\vec{r}} \cdot  m \vec{r} \right) 
+\]
+\[ 
+    = -m \dot{r} ^2 \vec{r} + \left( \dot{\vec{r}} \cdot  \vec{r} \right) m \dot{\vec{r}}
+\]
+Everything is quite okay other than $ \dot{\vec{r}} \cdot  \vec{r}$, we need to know what is it's cause or what it means.
+
+Now, going to the definition,
+\[ 
+\frac{\mathrm{d} \vec{r}}{\mathrm{d} t} = \dot{\vec{r}}
+\]
+Let us forget this dot notation and use $\vec{v}$. So, $\vec{v}= v \hat{v}$. Similarly,
+$\vec{r} = r \hat{r}$. Let $\hat{r} $ and $\hat{v}$ make $\theta$ angle with themselves.
+Then, for one moment of time,
+\[ 
+    \vec{r}\cdot \dot{\vec{r}} = \vec{r} \cdot \vec{v} = r v \left( \hat{r} \cdot \vec{v} \right) = r v \ \cos \theta
+\]
+Here is the trick,
+\[ 
+    \vec{r} \cdot  \dot{ \vec{r}} = r \left( v \cos  \theta\right) 
+\]
+Here $v \cos \theta $ is just the projection of $\vec{v}$ on the vector $\vec{r}$. This means, $v \cos \theta$ is just the magnitude of the change of the length of $r$. That is cool, because we don't have to deal with the vector form anymore. The rate of change of the length of $\vec{r}$ be $ \dot{r}$. Hence, 
+\[ 
+r v \cos \theta = r \dot{r}
+\]
+And so, we have,
+\[ 
+\vec{r} \cdot  \dot{\vec{r}} = r \dot{r}
+\]
+The dot of the two vector is just the distance of the orbiting mass time the rate of change of distance from our position. There is more rigourous solution to the $\vec{r} \cdot  \dot{\vec{r}}$, but this one is way intuitive. 
+
+So, we have,
+\[ 
+    \vec{L} \times  \dot{\vec{r}} = \left( mr  \dot{r} \right) \dot{\vec{r}} - m \dot{r}^2 \vec{r} 
+\]
+Take a factor of $mr \dot{r}^2$,
+\[ 
+\frac{\vec{L}\times \dot{\vec{r}}}{mr \dot{r}^2} =  \frac{ \dot{\vec{r}}}{ \dot{r}  } - \frac{\vec{r}}{r} 
+\]
+\[ 
+\frac{\vec{L}\times \dot{\vec{r}}}{m r \dot{r}^2} = \hat{e}_v - \hat{e}_r
+\]
+Together this is,
+\[ 
+\frac{\vec{L}\times \dot{\vec{r}}}{m r \dot{r}^2} + \hat{e}_r = \hat{e}_v
+\]
+Now, so that we can put inside gravity equation, we will differentiate this, because $\vec{L}$ is constant, it won't be too bad.
+
+\[ 
+\vec{L} = mr \dot{r} \ \hat{e}_L 
+\]
+\[ 
+    \dot{\vec{r}} = \dot{r} \hat{e}_v
+\]
+\[ 
+    ( \hat{e}_L \times \hat{e}_r) + \hat{e}_r = \hat{e}_v
+\]
+
+Now let me introduce the Energy Conservation law,
+\[ 
+E = \frac{1}{2 } mv^2 - \frac{GMm}{r}
+\]
+Here $v^2 = \left( \dot{\vec{r}} \cdot  \dot{\vec{r}} \right) $ 
+So, 
+ \[ 
+     mrv^2 = mr\dot{r}^2 = r \left( 2E + \frac{2GMm}{r} \right) = 2Er + 2 G M m 
+ \]
+
+\[ 
+    \vec{L} \times  \dot{\vec{r}} = \left( 2Er + 2 GMm \right) \left( \frac{  \dot{\vec{r}}}{ \dot{r} } - \frac{\vec{r}}{r} \right) 
+\]
+

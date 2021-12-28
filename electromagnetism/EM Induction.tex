@@ -1,0 +1,398 @@
+\documentclass[10pt,letterpaper,twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2.8cm,bottom=2cm]{geometry}
+\theoremstyle{definition}
+\newtheorem{fct}{\framebox[0.07\textwidth]{{\sffamily Fact}}}[section]
+\theoremstyle{definition}
+\newtheorem{pr}{\framebox[0.07\textwidth]{Pr}}[section]
+\theoremstyle{definition}
+\newtheorem{sol}{\framebox[0.07\textwidth]{Sol}}[section]
+\author{Ahmed Saad Sabit\footnote{I probably have done a horrendous number of mistakes, if you locate a few then please notify me at ahmedsabit02@gmail.com}}
+\title{\textsf{Notes on The Electromagnetic Induction}}
+\begin{document}
+\maketitle
+\textit{THE DOCUMENT IS FULL TYPOS AND MISTAKES, REVISION HIGHLY REQUIRED	NUMBERING ERROR IN PROBLEMS AND SOLUTIONS}
+\section{Foreground}
+{\sffamily First of all, the technique of the way the document is made is copied from Prof.Jaan Kalda \footnote{TalTech, Estonia} who brilliantly edited some extremely well written Study Guides for IPHO, all of the guide are well known and read throughout the Phy`sicks cast.His \textbf{Idea - Fact - Problem} is copied.\\ We come into the idea of induction from two basic things. First, moving a magnet near a coil induces a current by an EMF and Secondly, connecting the key of a coil near another generates deflection in the latter's joined Galvanometer. Both are the result of magnetism that are interacting with the electric fields. But the idea gets deeper, magnetic fields are present when a wire has electric current flowing through. I better enlist some magnetic ideas to be clear before starting
+\begin{itemize}
+\item There is a circular magnetic field around wire while conducting a steady current.
+\item The change of the magnetic field can induce an EMF. 
+\item The wire making a field can be twisted to loops that makes an amplified Magnetic field.
+\item Magnetic field has intrinsic relations with Electricity and \textbf{this is what you need to give emphasis on}
+\item Magnetic fields can also be derived from the \emph{Special Relativity}
+\end{itemize}
+We start with a quick check on the basics of the magnetic and electric fields, but the first rule you always are to follow is \textbf{using the Gauss's law by Pillboxes and Rectangle loops when we trying to theoretically dealing with things that have Geometric Symmetries}.}
+\begin{fct}\textbf{(Magnetic Force on Charge)}
+ The magnetic force on a moving charge is given by the vector cross product
+ \[\vec{F} = q\vec{v} \times \vec{B} \qquad F = qv B \sin \theta\]
+ Remember that the curl taking $\vec{v}$ to $\vec{B}$ by the right hand yields sought $\vec{F}$, it's the place where the perpendicular things come to play. The unit is of B \emph{Tesla}.
+ \end{fct}
+
+\begin{fct}\textbf{(On a current carrying wire)}
+Analogously q is same to i, the current and the v to l, 
+\[\vec{F} = i \vec{L} \times \vec{B} \qquad d\vec{F} = i \, d\vec{L} \times \vec{B} \]
+\end{fct}
+
+\begin{fct}\textbf{(Flux over a surface)}
+Take a surface that is closed in a field, multiply the field magnitude and the small area and then take it for all and add them up, this is flux.
+\[\phi = \sum \vec{B} \, \cdot \, \Delta a \qquad \phi = \oint \vec{B} \, \cdot \, \mathrm{d}a \]
+For case of a magnet, this is zero. The second Maxwell equation.
+\end{fct}
+
+\begin{fct}\textbf{(The source of a Magnetic Field, also Biot-Savart Law)}
+The sources are the same, moving charges, so it might either be a charge itself or a wire with a current
+\[B = \frac{\mu_0}{4 \pi} \frac{q \, v \, \sin\theta}{r^2} \qquad \vec{B} =   \frac{\mu_0}{4 \pi} \frac{q \, \vec{v} \times \hat{r}}{r^2}\]
+For the current we interchange the analogues
+\[ \vec{B} =  \frac{\mu_0}{4 \pi} \frac{i \, d\vec{L} \, \times \hat{r}}{r^2} \qquad B =  \frac{\mu_0}{4 \pi} \frac{i \, L \sin\theta}{r^2}\]
+\end{fct}
+%I am just frustrated with the fact that even if I try a zero effort problem; that is turning out to be incorrect. A simple solution you'll say is just locate what you are conking off. I do, but it's still wrong. I don't know what to do, I'd rather forget and sleep. Time heals wounds dear.
+\begin{fct}\textbf{(The Ampere's law)}
+We take a loop integral, just multiply the $\vec{B}$ with all the small parts of the loop we are interested and sum them up. That comes out to be proportional to the current of the wire that has been surrounded by the loop.
+\[\Sigma \vec{B} \, \Delta \vec{s} \;\rightarrow \; \oint \vec{B} \cdot \mathrm{d}\vec{s} = \mu_0 i \]
+\end{fct}
+\begin{pr}\textbf{Purcell 6.10}
+Two parallel ring have the same axis and are separated by a small distance $\epsilon$. They have the same radius a, and they carry the same magnitude of the current I but in the opposite direction. Consider the magnetic field at points of the axis of the rings. The field is zero in midway of the rings, because the contributions of the ring cancel it out. And the field is zero far away. So it must reach a maximum at some point in between.
+
+\begin{itemize}
+\item \textbf{How much field is z above a loop carrying I current?}
+\item \textbf{Find the point and work in the approximation of the fact $\epsilon$ is extremely small than a}
+\end{itemize}
+ 
+
+\end{pr}
+
+\begin{sol}
+Let on the axis, $z=0$ at the midpoint, the zero point. Then we have to solve a shorter problem that \textbf{How much field is z above a loop carrying I current?}\\
+We are z distance above the loop along the axis, r distance from any elementary point on the loop, the loop radius is b. By using the \textbf{Fact 1.4}, the Biot Savart Law, we can write that,
+\[ dB \, = \, \frac{\mu_0 I \, dl}{4\pi \, r^2} \cos\theta \]
+\[ dB \,= \, \frac{\mu_0 I dl \, b}{4\pi \, r^2 \, r}\]
+We have to carry out an integral all over the  round. We know that $ \int dl = 2\pi \, b$ and push it over.
+
+\[B = \frac{\mu_0 I \times 2\pi b^2}{4\pi r^3} = \frac{\mu_0 I b^2}{2(b^2 + z^2)^ {\frac{3}{2}}}\]
+
+We have an interesting case out of the above formula when we are at the exact center, $z=0$.
+
+\[B = \frac{\mu_0 I}{2b}\]
+
+Back to our previous interest, at a general value of z for the two loops, 
+\[ B= \frac{ \mu_0 I a^2} {2 ( a^2 + (z - \frac{\epsilon}{2})^2 )^{\frac{3}{2} }} - \frac{ \mu_0 I a^2}{2 ( a^2 + (z + \frac{\epsilon}{2})^2 )^{\frac{3}{2}}}  \]
+
+In fact notice how the two sign change with the two loops, keep in mind that we have one loop with a current flow in the opposite direction. \\
+Now for the required approximation, we can just  use the Taylor series in order to calculate the odd looking difference above for the low order of $\epsilon$. But by definition, we reduce our work by the fact that\textbf{ the difference is simply the $\epsilon$ times the negative of the derivative of the function $\frac{\mu_0 I a^2}{2(a^2 + z^2)^{\frac{3}{2}}}$}. It took me a while how one might come into the definition, we have to take the approximation not around $\epsilon$, but around the $\frac{\epsilon}{2}$. The difference can be nicely fit into the well known approximated function, $f(t + \Delta t) - f(t) = \Delta t \frac{df}{dt}$ as the Taylor approx seen. To bring this format,
+\[
+\frac{ \mu_0 I a^2} {2 ( a^2 + (z + ( - \frac{\epsilon}{2}))^2 )^{\frac{3}{2} }} -
+\frac{ \mu_0 I a^2} {2 ( a^2 + (z -(- \frac{\epsilon}{2}))^2 )^{\frac{3}{2} }}
+\]
+What is confusing is the format $f(t + \Delta t) - f(t - \Delta t)$. This isn't hard to deal with if we take it generally.
+\[
+f(t + \Delta t) - f(t) = \Delta t \frac{df}{dt}\]
+\[
+f(t) - f(t- \Delta t) = f(q + \Delta q) - f(q) = \Delta q \frac{df}{dq} 
+\]
+We can easily see that,
+\[ t = q + \Delta q \]
+\[ t - \Delta t = q \]
+\[t = t - \Delta t + \Delta q \]
+\[ \Delta t = \Delta q \]
+\[ \therefore \Delta q \frac{df}{dq} = \Delta t \frac{df}{d(t - \Delta t} =\Delta t \frac{df}{dt - d(\Delta t))}  \]
+As because the $\Delta t$ is a constant,
+\[  \Delta q \frac{df}{dq}  =   \Delta t \frac{df}{dt}   \]
+Hence, putting all the things together,
+\[ f(t + \Delta t ) - f(t - \Delta t) = 2 \Delta t \frac{df}{dt} \]
+This 2 factor will make the $-\frac{1}{2} \epsilon$ into a single $-\epsilon$ one as we proceed. Take a normal derivative,\footnote{I wish Mr. Morin wrote this, but it's good, I am finally able to translate the hack. :)}.
+But note that this really sorts out well but I don't know if it's okay or not.
+\[ B = -\epsilon \frac{d}{dz} \left(           
+\frac{\mu_0 I a^2}{2(a^2 + z^2)^{\frac{3}{2}}}
+\right) 
+=
+\frac{3 \epsilon \mu_0 I a^2}{2} \frac{z}{(a^2 + z^2)^{\frac{5}{2}}}
+\]
+We want to find the maxima hence take the equal to zero. Taking the quotient rule and setting the numerator of the derivative equal zero gives
+\[ 0 = ( a^2 + z^2)^{\frac{5}{2}} (1) - z(\frac{5}{2}) (a^2 + z^2) ^ {\frac{3}{2}} (2z)\]
+\[\rightarrow \, 0= (a^2+z^2) \, - \, 5z^2 \, \rightarrow \, z = \frac{a}{2} \]
+Thus the maximum value turns out to be (after this much of horrendous amount of painful typing)
+\[\frac{24 \epsilon \mu_0 I}{25 \sqrt{5} a^2} \]
+
+And we are done. :)
+But I wonder who can think so deep in the pressure of time during an olympiad examination. Better learn the hack.
+\end{sol}
+
+\begin{fct} \textbf{The Magnetic Field above a loop}
+As we found in the previous problem, the equation that determines the field z above a b radius loop is
+\[B =	\frac{\mu_0 I b^2}{2(b^2 + z^2)^ {\frac{3}{2}}}\]
+\end{fct}
+
+\begin{pr}
+Find the magnetic field inside a solenoid, then make an approx for infinite length
+\end{pr}
+
+Let the loops per a unit length be n. This is easy to see, the integration is needed to be carried out per the loops and as a function of the distace, it is better we use a simple $\theta$ over the integration and bring a Trig that is good for the infinite approximation.\\
+Let's be at the center, then for a r radius loops, $\theta$ above the point from where we are at, subtends a small length, on the interior of the loop is $r \, d\theta \times \frac{1}{\sin \theta} $, notice that the $r \, d\theta$ is inclined on the surface we are interested on. The $\sin \theta$ is needed for the tilt to have a projection.\\
+Small loop is thus presumed, it carries a small current $ dl = I \times \frac{r\,d\theta}{\sin \theta} $. I is the net current flown. We also have $ r = \frac{b}{\sin \theta}$, then all we need to do now is carrying out an integration taking the elementary B field from the fact of the single loop by a elemental I current. This leaves us with a $\cos \theta $ room of definite integral. Use this and the problem can be done with some more effort.
+
+\begin{fct} \textbf{(Faraday's law)}
+The induced EMF in a loop is given by, 
+\[ \varepsilon = - N \frac{d \phi}{dt} \]
+As we know that the $\phi$ only comes if there is an external source of magnetic field as we know $\phi = B \times A$. Thus B is proportional the sources current i. We can thus write an equivalence. Assuming the geometry of the loops stay constant,
+\[\varepsilon = -M \frac{di}{dt} \]
+This also happens if there is Inductor, it makes $\vec{B}$ itself and induces an EMF itself that resists any change in the current by inducing an opposite direction EMF. Then the M, the Mutual Inductance above is the self inductance. We say it L.
+\[\varepsilon = -L \frac{di}{dt} \]
+The relation below holds, refer to University Physics for more,
+\[  L = \frac{N \phi}{i}
+\]
+\end{fct}
+\begin{fct} \textbf{(The Energy in Inductor and Capacitor)}
+We can easily derive it by the $P = I V$ and inserting the V by the $\epsilon$ in place.
+\[E = \frac{1}{2} L i^2  \qquad 	E = \frac{1}{2} \frac{1}{C} V^2	\]
+For a whole circuit, this is useful
+\[ \varepsilon i = i^2 R + Li \frac{di}{dt} 
+\]
+
+\end{fct}
+\begin{fct} \textbf{(R-L circuit Current)} 
+We write the Kirchoff's Potential Rule and be left with a decent solution, charging
+\[ \varepsilon - iR - L \frac{di}{dt} =0 \; \rightarrow \; i = \frac{\varepsilon}{R} (1 - e^{ -\frac{R}{L} t }) \]
+And discharging,
+\[ i = I_0 e^{ -\frac{R}{L} t}
+\]
+\end{fct}
+
+\begin{fct} \textbf{(The L-C circuit oscillation)} 
+It's SHM in nature, ones the charge go to the Capacitor and once to the Inductor, they maintain a SHM analogue of the charge in a component through out. It would be R-L-C if we put any other component inside with resistance.
+The R causes a damped SHM
+\[ q = Q \cos ( \omega t + \phi) \]
+\[ i = -\omega Q \sin (\omega t + \phi) \]
+\[ \omega = \frac{1}{\sqrt{LC}} \]
+
+The SHM equation for this is helpful,
+
+\[ \ddot{q} + \frac{1}{\sqrt{LC}} q = 0 \]
+\end{fct}
+
+%add the trig and the math hacks here %
+
+\begin{fct} \textbf{Equivalent Inductance}
+If all the inductors are in a series, then using the fact that total EMF equals to the sum of the $-L_i \frac{di}{dt}$ 
+\[ L = L_1 + L_2 \]
+As many as they are\\
+For parallel, using the fact the current are distributed in the junction as $i_1$ and $i_2$ and getting the derivatives,
+\[ \frac{1}{L} = \frac{1}{L_1} + \frac{1}{L_2} \]
+\end{fct}
+\begin{pr}
+There is a rectangle loop made of a conductor wire, let its corners be ABCD. AD and BC has a resistor connected in the mid with $R_1$ and $R_2$ respectively. A conductor rod is slid on the rectangle loop by keeping it's ends on the line AB and CD, the rod kept always parallel to the BC and CD. If there is a magnetic field made into the loop perpendicular to the area the loop makes, and if we slide the rod in constant V,\textbf{What would be the current flowing through it?}
+\end{pr}
+\begin{pr}
+Let's have a semi circle loop that has been pinned on a surface through it's center of it's diameter. Initially, there would be two regions on the surface, the one region with loop area don't have any magnetic field, but the other half has, you can think the diameter at $t=0$ is like a partition. If the loop is made of copper with resistivity $\sigma$, its radius is r and starts to rotate with angular velocity $\phi$, then \textbf{find the current induced in it as a function of time}.
+\end{pr}
+\begin{pr}
+Suppose we have a super strong Solenoid with a high current constantly flowing through it. And also a smaller one with its ends soldered together. \textbf{What can happen if we throw the smaller solenoid inside the big solenoid while its active?} Of course neglect the relativistic effects.
+\end{pr}
+\begin{pr}
+We are interested to find how a classical atom might work in a magnetic field. To do this let's build a case for Hydrogen atom in a constant magnetic field. \\
+There is a constant magnetic field going into the surface, at the center there is a stationary positive charge, with a negative (electron analogue) r distance away, fixed at the end of a non conducting rod with rotation axis at the positive charge. An $\omega$ angular velocity of the negative charge is achieved when magnetic field is not present, but \textbf{what would be the changes if we suddenly switch on the Magnetic field? Analyse the two period of change, \textit{instantly} and \textit{after a long time} of switching on the magnetic field }.
+
+\end{pr}
+
+There is a huge set of mathematics often required for doing any problems seen in the text books like Purcell and Griffiths. Most of which are integrals often requiring trigonometry with them. So more than the Physics, it's higher math. In all course fluency in mathematics does half of the job. So it's logical to use some mathematical hacks as we work on the problems. Notice how we used the Taylor approximation in the first example problem.
+
+\begin{pr}
+ Solve the following integral $\int\frac{x}{(x^2+a^2)^{\frac{3}{2}}}\, \mathrm{d}x  $
+\end{pr}
+\begin{sol}
+Our strategy would be to eliminate the things we aren't familliar with, in this case the integral with \emph{powers and powers above the bracket}. Hopefully, this simplification becomes very doable in case we put \emph{Trigonometric DIfferentials} in place of odd things.
+\begin{align}
+\int\frac{x}{(x^2+a^2)^ {\frac{3}{2}}} \, \mathrm{d}x \notag = \int\frac{a\,tan\theta}{ (a^2\, tan^2\theta + a^2)^ {\frac{3}{2}} } \, a\, sec^2\theta \,\mathrm{d}\theta
+\end{align}
+As we make an educated guess that taking a and x as a side of a right angled triangle with $\theta$ angle in between,
+\begin{align}
+x & = a \, tan\theta  \notag \\
+ x^2 & = a^2 \, tan^2\theta  \notag \\
+ \mathrm{d}x& = a \,sec^2 \theta\, \mathrm{d}\theta \notag
+\end{align}
+So we move to specifically chase what we sought of,\\
+\begin{align}
+\int \frac{a^2 \, tan\theta \,sec^2\theta}
+    		{ (a^2)^{\frac{3}{2}} (tan^2\theta + 1)^{\frac{3}{2}} } \, \mathrm{d}\theta	\notag 
+&=\int \frac{a^2 \, tan\theta \,sec^2\theta}
+			{a^3 \, (sec^2\theta)^ {\frac{3}{2}} }	\, \mathrm{d}\theta	\notag \\
+&= \frac{1}{a} \, \int \frac{tan\theta \, sec^2\theta}
+								{sec^3\theta} \,\mathrm{d}\theta		\notag \\
+&= \frac{1}{a} \, \int tan\theta \, cos\theta 	\, \mathrm{d}\theta \notag \\
+%
+&=\frac{1}{a} \, \int sin\theta \, \mathrm{d}\theta \notag	\\
+&= - \frac{1}{a} \, cos\theta + C_0 \\
+\intertext{By simply bringing back what we did to the x's and a's,}
+&= - \frac{1}{\sqrt{x^2 + a^2}} + C_0 \notag
+\end{align}
+\end{sol}
+
+\begin{fct} \textbf{(Applying the inverse trig to integrals)}
+We have to recognize the algebraic structure and try to make the algebra look more like one the equation below. There are three general \textbf{Trig Derivatives} and \textbf{Anti - Derivatives}.\\
+\textbf{\textsf{The Sin integration rule}}
+\begin{equation}
+\frac{d}{dx} \, \sin^{-1} x \, = \frac{1}{\sqrt{1 + x^2}}
+\end{equation}
+\[
+\int  \frac{1}{\sqrt{1 + x^2}}\, \mathrm{d}x = \sin ^{-1}x + \, C
+\] 
+\textbf{\textsf{The Tangent integration rule}}
+\begin{equation}
+\frac{d}{dx} \tan ^{-1}x = \frac{1}{1 \, + \, x^2}
+\end{equation} 
+\[\int \frac{1}{1 \, + \, x^2} \, \mathrm{d}x = \tan ^{-1}x \, + \, C\]
+\textbf{\textsf{The Tangent Coefficient rule}} \\
+We can rather derive it from above. But it's the most common form we use the tangent rule.
+\[\int \frac{1}{a^2 + x^2} \, \mathrm{d}x \,=\, \frac{1}{a} \tan ^{-1} (\frac{x}{a}) \,+\, C
+\]
+\end{fct}
+But in many cases these might be helpful but it requires some practice whether to use the trig or any other sort of trick. Better try some following easy problems. Solutions are for checking.
+\begin{pr}
+Solve : $ \int \frac{1}{9+x^2} \, \mathrm{d}x$
+\end{pr}
+
+\begin{pr}
+Solve : $ \int \frac{\sin ^{-1}x}{\sqrt{1 - x^2}} \, \mathrm{d} x $
+\end{pr}
+
+\begin{pr}
+Solve : $ \int \frac{x+9}
+								{x^{2} + 9} \, \mathrm{d}x $
+\end{pr}
+
+\begin{pr}
+		Solve : $ \int \frac{1}
+		{\sqrt{7 - x^{2}   }} \, \mathrm{d} x
+		$\\
+		And I rather leave this one (no solution) for some quick practice
+		\end{pr}
+		
+		\begin{pr}
+		Solve for an indefinite integral : $ \int_{x=0} ^{x=\infty}
+			\frac{\lambda}
+			{2 \pi \epsilon_0} \, \cos\theta \, \frac{dx}{y^2 + x^2} $
+			I think it wouldn't be wrong to do a definite integral though.
+			\end{pr}
+
+		\begin{pr}
+Don't solve it rigorously, but look for the potential approaches that you think would work : $ \int \frac{x}
+                                                                                                                                                                {	( x^2 + k^2) ^ {\frac{3}{2}} } \, \mathrm{d}x $
+                                                                                                                                                                \end{pr}
+
+\begin{sol}
+We can see the $9 + x^2$ part make a nice match with the tan coefficient. It's not always necessary to have a perfect square in that position of 9, its something like 7, then write it as $a^2$ during the math and at the end deal with the a as a simple $\sqrt{7}$. This fact is also usable in very special cases if done properly, but not shown here.\\
+So write the 9 as $3^2$ and we're done.
+\[ \int \frac{1}{3^{2} + x^2} \, \mathrm{d} x \, = \, \frac{1}{3} \tan ^{-1}
+ 																									 (\frac{x}{3}) \, + \, C \]
+
+\end{sol}
+
+\begin{sol}
+It looks scary, but whenever you see some symmetry, try if u-substitution works or not. We see the symmetry of the numerator and the denominator. 
+\[ 
+ \int \frac{\sin ^{-1}x}{\sqrt{1 - x^2}} \, \mathrm{d} x 
+ \]
+See that the derivative of $\sin^{-1} x$ is simply $\frac{1}{\sqrt{  1 - x^2      }}$, so
+\[ u = \sin^{-1} x	\; \rightarrow \; du = \frac{1}{\sqrt{  1 - x^2      }} \, dx \]
+\[\int u\, du \, = \, \frac{u^2}{2} \,+\, C \\
+= \frac{(\sin ^{-1}x)^2}{2} \,+\, C\]
+\end{sol}
+
+\begin{sol}
+I myself look forward to apply the idea myself. We have a 9 above that doesn't let us do the u-substitution and again we have an x above that don't let us to factor out anything, so the idea is something to make the previous ideas happen, we do it by breaking the numerator legally. We are able to write that
+\[		\frac{x + 9}{x^{2} + 9}
+		\;
+		=
+		\;
+		\frac{x}{x^{2} + 9} 	+ 		\frac{9}{x^{2} + 9}
+\]
+That enables us to apply the two of our ideas separately, we need to the two integrations,
+\[			\int	\frac{x}{x^{2} + 9} \, \mathrm{d} x	+
+			\int	\frac{9}{x^{2} + 9} \, \mathrm{d}x  \]
+
+For the first one we do the u-sub,because\textbf{ the derivative of the denominator is equal to the numerator}. 
+\[ u = x^{2} + 9 \]
+\[ du = 2x \, dx \]
+\[ x \, dx = \frac{du}{2}
+\]
+Use this and we will have the general case, and the second one to deal is just the coefficient tan one
+\[ \frac{1}{2}	\int	\frac{\mathrm{d}u }{u}
+			\, + \,
+	9 \int \frac{1}{ x^{2} + 9}\, \mathrm{d} x
+    \]
+    \[ = \, \frac{1}{2} ln(u) \, + \, 9\frac{1}{3} \tan ^{-1} (\frac{x}{3})\, +\, C	
+\]
+\end{sol}
+\textit{I just figured out the numbering has got some problems. Who knows the \LaTeX to fix this? I want to remove the number tag from the solution. }		
+
+If you apply the Gauss Law and look on the symmetry of the problems then it's a sure that most of them has a similar taste
+\begin{itemize}
+\item The charge distribution is said and we are asked to find the $\textbf{E}$ at a distance. \textbf{Hard} if it depends on direction vectorally.
+\item The same as above said but asked to find the potential.
+\item The problem often requires to write \emph{Integrals over a specific Geometry}. Like we often need to deal with $ d \theta, \,  dr$ and things like $ \int \mathrm{d} \theta = 2ak \rho \int_{-\frac{2}{3}\pi} ^{\frac{2}{3} \pi} \cos \theta \,\mathrm{d} \theta $ (just an example).
+\item The problems demand a loop or something Gauss or Ampere to be easy.
+\item A hard set of problems that asks to find a function of something like a $q(x)$ or $q(x,y,z)$ that is extremely difficult and tedious using contemporary methods or basic knowledge. Things to use are like \emph{Earnshaw's Theorem, Laplace Equations, Green's Theorem} and same like problems are present in Mechanics, Optics and Thermal Physics too. Like finding the equation of a hanging string, looking for the shape of an Optical lens, or looking for the film shape taken by a nearly placed pair of rings that was immersed in a soap solution\footnote{From the Kalda Booklets}.
+\end{itemize}
+Fortunately this similarity makes a room for a nicer depth to the topic.
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

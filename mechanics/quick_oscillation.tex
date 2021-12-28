@@ -1,0 +1,107 @@
+
+
+\documentclass[10pt, a4paper]{memoir}
+\usepackage[fancythm, lightgreen,nosecthm]{ahsan}
+
+
+% figure support
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+
+
+\title{The General Matrix problem of Oscillation}
+\author{Ahmed Saad Sabit}
+\date{\today} 
+
+\usepackage{mathdots}
+\counterwithin{figure}{section}
+
+\begin{document}
+\maketitle
+
+
+\prob{  }{  }{  }{ There are two masses $m_1$ and $m_2$ that are positioned between two walls in a coupled system. Find the modes of oscillations \emph{using Matrices}. }
+
+\solu{ 
+        For a displacement, $x_1$ nad $x_2$, 
+        For the first mass,
+        \[ 
+            -k x_1 + k(x_2 - x_1) = - k (2x_1 - x_2)
+\] For the Second mass,
+
+\[ 
+    - k \left( x_2 - x_1 \right) - k x_2 = - k (2x_2 - x_1)         
+\]
+The equation of motion,
+\[ 
+    \ddot{x_1} = - \frac{k}{m} \left( 2x_1 - x_2 \right) 
+\]
+\[ 
+    \ddot{x_2} = -\frac{k}{m}\left( 2x_2 - x_1 \right) 
+\]
+
+Assume that the solution of these are,
+\[ 
+\begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = 
+e^{i \alpha t} 
+\begin{pmatrix} A \\ B \end{pmatrix} 
+\]
+Thus, 
+\[ 
+    \ddot{x_1} = - \alpha^2 A e ^{i\alpha t} = - \alpha^2 x_1 = - \omega^2 \left( 2A - B \right) e^{i \alpha t}
+\]
+\[ 
+    \ddot{x_2} = - \alpha^2 B e ^{i \alpha t} = -\alpha^2 x_2 = - \omega^2 \left( 2B - A \right) e ^{i \alpha t}
+\]
+
+From there, we can write,
+\[ 
+- \alpha^2 A + 2 \omega^2 A - \omega^2 B = 0
+\]
+
+\[ 
+-\alpha^2 B + 2 \omega^2 B - \omega^2 A = 0
+\]
+
+In matrix form,
+\[ 
+    \begin{pmatrix} -\alpha^2 + 2\omega^2 & -\omega^2 \\
+        -\omega^2 & - \alpha^2 + 2 \omega^2
+    \end{pmatrix} 
+    \begin{pmatrix} A \\ B \end{pmatrix} =0
+\]
+This requires the $\det m$ to be zero,
+\[ 
+    \left( - \alpha^2 + 2\omega^2 \right) ^2 - \left( \omega^2 \right) ^2
+\]
+\[ 
+= \alpha ^{4} + 4 \omega^{4} - \omega^{4} - 2 \alpha^2 \cdot  2 \omega^2 
+\]
+\[ 
+    \alpha ^{4} - 4 \alpha^2 \omega^2 + 3 \omega ^{4} 
+\]
+
+This is equal to zero,
+\[ 
+\alpha ^{4} - 4 \alpha ^2 \omega^2 + 3 \omega ^{4} = 0
+\]
+This solves, 
+\[ 
+\alpha^2 = \frac{4 \omega^2 \pm \sqrt{16 \omega^4 - 12 \omega^{4}} }{2}
+\]
+The solutions are,
+\[ 
+\alpha = \pm \omega
+\]
+
+   }
+
+
+\end{document}

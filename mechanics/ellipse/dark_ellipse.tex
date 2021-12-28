@@ -1,0 +1,1370 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[fancythm, mathsans,darkblue,nosecthm]{ahsan}
+\usepackage[]{transparent}
+\usepackage[]{comment}
+% figure support
+\usepackage[]{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{  }
+\fancyhead[LE,RO]{ PhODS }
+\fancyfoot[CE,CO]{\leftmark }
+\fancyfoot[LE,RO]{\thepage }
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt }
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{0.7\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+\newcommand{ \pk }[1]{\begin{problem} #1 \end{problem} }
+
+
+\title{Exploring Ellipse doing Random things}
+\author{Ehmet Levi Civita}
+\date{\today} 
+
+\usepackage{mathdots}
+\counterwithin{figure}{section}
+
+\begin{document}
+\maketitle
+
+There's no need to cry after failing to solve another problem, brew a cup of coffee and relax. We will explore ellipses.
+
+Without bombarding with difficult problems. 
+\section{ String Method }
+How can we draw an ellipse? A very nice technique is getting a loop of string. And then pivoting two points on a sheet of paper. We will put the string around the pivot,
+and then draw a curve by the string as in the diagram.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Elliko-g.svg.png}
+    \caption{ Called ``Garderner's Method" }
+    \label{fig:}
+\end{figure}
+
+The notion is, there will be two points, it's the pivots. From here, the distance from the points to any random point of the ellipse is $r_1$ and $r_2$. The definition of ellipse is that the distance $r_1 + r_2$ is a constant. 
+
+Let us say the distance $r_1 + r_2 = l$, which is a constant. 
+
+The distance between the two pivot is $d$, thus, the string that we have, has a circumference (or the total length of the looped string) is $l + d$. 
+
+\theo{  }{  }{ \emph{Ellipse} is the locus of all points that are positioned at distance $r_1$ and $r_2$ from two pivot points respectively. The rule is $r_1 + r_2$ is always  \emph{Constant}.    
+
+    These pivot points may also be called ``Focus" in fancy language.
+}
+
+I know, calling this ``theorem" sucks. But who cares, we don't. 
+
+Now this is all fine. But how can we find the equation, the specific function, that will give the plot of an ellipse, given $d$, $l$, and other necessary stuffs? 
+
+It's not very hard though, we can do it. All we need to recap is that \emph{Cartesian Coordinates} is measured in $x,y$, hence the function my look like $f(x) = y$, and in case of \emph{Polar Coordinate}, measurements of positions is done in $r,\theta$, thus, a function may look like, $f( \theta) = r$.
+
+
+
+
+
+Let one of the pivot be at $r= 0$, and the other one at $r= d$ along the horizontal axis. 
+
+
+%    \begin{figure}[ht!] 
+ %       \centering
+ %   \incfig{constellipsedraw}
+ %   \caption{Drawing an Ellipse using strings, visualizing $r_1 + r_2 = l$ constant.}
+ %   \label{fig:constellipsedraw}
+%\end{figure}
+
+
+Here, we can find a few equations first,
+\[ 
+r_1 \cos \theta + r_2 \cos \alpha = d
+\]
+\[ 
+r_1 \sin \theta = r_2 \sin \alpha
+\]
+\[ 
+r_2 = l - r_1
+\]
+Now, using these equations, we do the following,
+\begin{itemize}
+    \item Eliminate $\alpha$ angle from the first equation. 
+    \item Eliminate $r_2$ using $r_2 = l - r_1$ from the first. 
+    \item Solve the first equation by keeping $r$ in one side.    
+\end{itemize}
+So, in quest of eliminating and solving the first equation, what we get is,
+\[ 
+    r_1 \cos \theta + \left( l-r_1 \right) \sqrt{1 - \left( \frac{r_1}{l- r_1} \right) ^2 \sin^2\theta} = d
+\]  
+It takes some amount of math to solve it, what we need is to find $r_1$ in one side of the equation. It isn't too hard though, what we end up with is,
+\[ 
+    r_1 = \frac{l^2 + d^2}{2 \left( l- d \cos \theta \right) }
+\]
+We can do a very quick sanity check, if the $d=0$, then what we essentially do is plot a circle (I drew a small picture in my notebook to visualize), now the reason is the two point is essentially a single point if distance between them is zero. So, the string ends up plotting circle. And it really does,\[ 
+r_1 = \frac{l^2}{2 l } = \frac{l}{2}
+\] Makes sense.
+
+We can make things a little more tidy, let us factor off $l$ and say that $\frac{d}{l} = e$, 
+hence,
+\[ 
+    r = \frac{l^2 \left(  1 + \frac{d^2}{l^2} \right) }{2l \left( 1-\frac{d}{l}\cos\theta  \right) }
+\] 
+And let us rename $\frac{l}{2 } = a$, hence,
+\[
+    \boxed{ r = \frac{a \left( e^2 + 1 \right) }{1 - e \cos \theta} }
+\]
+This is an \textbf{Equation of an Ellipse} in Polar Coordinates when one of the pivot or focus is our center/origin.
+
+It's kind of nice, but then I tried to find some tricky way to isolate a method to find the tangent, but I learned I can't be Jaan Kalda so soon.
+
+But I did find a way to manipulate an old realization of mine (that I probably have seen somewhere else too).
+
+
+\newpage 
+\section{ Projection of a Circle }
+When I would go to the Mosque, I would look above where Ceiling Fan is spinning fast and making a clear cut circle. But the fans wouldn't look like circle if they weren't directly above the head, they would look like ``Ellipses".
+
+Now, I naturally (or naively) assumed they are ellipses when looked from an oblique angle. And they are, but I don't know the proof yet. Well, we just proceed with our thought (it's correct though, but I say again I don't have the proof yet). 
+
+I used this projection of 2D circle in an angle to make an idea what the tangent of an ellipse would look like.
+\begin{figure}[ht]
+    \centering
+    \incfig{ellipses-are-oblique-circles}
+    \caption{Ellipses are oblique Circles from the side view.}
+    \label{fig:ellipses-are-oblique-circles}
+\end{figure}
+We have $\Gamma_1$ and $\Gamma_2$ circles. $\Gamma_2$ is as iff $\Gamma_1$ has been rotated and made at an angle with the horizontal, say angle is $\alpha$. If we project the $\Gamma_2$ on the circle $\Gamma_1$, we get an \emph{Ellipse}. 
+This can be used to find the tangents of the ellipse.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{tangent-of-ellipse}
+    \caption{Tangent of Ellipse}
+    \label{fig:tangent-of-ellipse}
+\end{figure}
+
+Now, the circle is inclined with some angle. Say that the angle that the inclined circle makes with the horzontal plane as $\alpha$. If the circle $\Gamma_1$ has a tangent vector $\vec{v}$ and if it's inclined, then on the $\Gamma_2$ circle, the vertical component of the vector is going to look little smaller by some factor that depends on the angle the circle $\Gamma_{2}$ makes with the horizon. 
+
+If the angle $\Gamma_2$ made with horizon was $0^{\circ}$, then the whole $\Gamma_2$ would look like parallel to surface and apparently $v_y' = 0$, the component of $\vec{v}$ along $\hat{y}$ would look zero. Draw some diagram, that will be clear.
+
+This vector thing is drawn below.
+\begin{figure}[ht!]
+    \centering
+    \incfig{the-vector-after-inclination}
+    \caption{The vector after inclination}
+    \label{fig:the-vector-after-inclination}
+\end{figure}
+From the diagram, the $\vec{v_y}$ starts to look like (apparently) $\vec{v_y} \sin \alpha$ after the inclining. And because of the direction of rotation, only the $y$ axis based components will seem to reduce in size. 
+
+So the tangent of the Ellipse can be related with it's circle form (as we saw in the above figures),
+\[ 
+\vec{v} = v_x \hat{e_x} + v_y \hat{e_y}
+\]
+And the Ellipse has the counter part (after the tilting),
+\[ 
+\vec{v}' = v_x \hat{e_x} + v_y \sin \alpha \hat{ e_y}
+\]
+
+Now there is some caution to be maintained, looking at the figure, you can see that the vector $\vec{v}$ has it's tilted counterpart  to be exactly below it  along the $y$ axis. 
+
+This makes sense. But the position of the vector here is necessary (as it is a tangent), and it has to be measured using the $x,y$ coordinates. Look the position of the tangent in circle and it's ellipse counterpart has same $x$ coordinate and the $y$ coordinate can be measured using simple trignonometry (because we know $\alpha$). 
+
+Here, the position of the tangent has different values in Polar Coordinates. So be mindful about it. I have basically presented the idea, we can do various things with it. One thing that comes in my mind is finding area with it, or using it somehow to find the arc length or circumference of the ellipse (which turns out to be very hard). 
+
+But there is a question that stil remains, \emph{What is the Eccentricity $e$ of the tilted circle $\Gamma_2$ which looks like ellipse in this case?}. Well, we can quickly do it.
+
+Semi major axis is the half the longest line that joins two ends of the Ellipse. Semi minor is half of the shortest line that joins two points of ellipse.
+
+If you draw an ellipse with the focus (or pivot) points in $x$ axis, the horizontal line across the ellipse is major axis (whose half is semi major axis) and the verticle one is semi minor. 
+
+Now, in this case of tilted circle looking like ellipse, the semi major axis is $r$, which is the radius of the circle $\Gamma_1$. Assume that the tilted circle $\Gamma_2$ makes $\theta$ with the horizontal. 
+
+The semi minor axis is $r \sin \theta$. Draw a diagram or refer to the one above. There is a relationship between semi minor and major axis. It can be found quickly from the equations that we have derived. But simply said, the relation is,
+\[ 
+\text{Semi Minor Axis} = \sqrt{1 - e^2}  \cdot \text{Semi Major Axis}
+\]
+Thus,
+\[ 
+r \sin \theta = \sqrt{1 - e^2}  r
+\]
+Solves, like this,
+\[ 
+e^2 = 1 - \sin ^2 \theta \to \boxed{  e = \cos \theta}
+\]
+Thus eccentricity is just $\cos \theta$. 
+
+Now obviously there are some direct methods of finding tangents, I have some ninja techniques in my sleeve too. First of all, what is this tangent vector anyway?
+
+So you have some implicit function, say, $\vec{r}\left( t \right) $, for example, this in expanded form,
+\[ 
+    \vec{r} \left( t \right)  = x\left( t \right)  \hat{e}_x +
+    y\left( t \right) \hat{e}_y +
+    z\left( t \right) \hat{e}_z
+\]
+Now, let's tweak $t$ by a little $\mathrm{d} t$ amount, what we have is,
+\[ 
+    \vec{r}\left( t + \mathrm{d} t \right)  - \vec{r}\left( t  \right) = \mathrm{d} \vec{r}
+\] 
+This small shift vector $\mathrm{d} \vec{r}$ is the direction where the tangent points, we can directly state that,
+\[ 
+\vec{\tau} = \frac{\mathrm{d} \vec{r}}{\mathrm{d} t}
+\]
+This is a nice thing. It directly yields a vector too. 
+
+I tried this, and I got a result that was little intereting,
+\[ 
+    \hat{\tau} = \hat{\theta} - \frac{\hat{r}}{\sqrt{1 + e^2 - 2 e \cos \theta} }
+\] I am not sure if this unit vector equation is correct or not.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{ Finding Ellipse in Planet Orbits }
+How about doing a very small recap? 
+
+If you are familiar, feel free to skip some recap parts and start from the section \textbf{The Solution}
+
+
+Gravity is the main force that acts on the bodies. We will assume our universe is full of mass. Thus, the first interaction we can think of them (that they do with each other, for example a star to a planet) is gravity. The two bodies $m_1$ and $m_2$ be located at $\vec{r_1}$ and $\vec{r_2}$, this means, 
+\[ 
+    \vec{F} = \frac{Gm_1m_2}{|\vec{r_2} - \vec{r_1}|^2} \frac{\vec{r_2} - \vec{r_1}}{| \vec{r_2} - \vec{r_1}|}
+\]
+
+If we can assume that the vector that joins the two mass is $\vec{r}$ and the dirction unit vector is $\vec{e}_r$, then, we can show this formula very shortly,
+\[ 
+\vec{F} = \frac{Gm_1m_2}{r^2} \vec{e}_r
+\] 
+Now, what will be the shape of the trajectory of a planet that is located at some distance from the star? 
+
+From observation we can tell if the planet has some random initial speed, it will circulate around the star. Now, there must be a very well defined physics behind the system. 
+
+We can use some mechanics to find out the \emph{shape} of the motion of planet around the star. There are some good conservation laws,
+\begin{itemize}
+    \item Energy Conservation law.
+    \item Angular Momentum Conservation law.
+\end{itemize}
+Total Energy is shown by, 
+\[ 
+    E = \frac{1}{2} mv^2 + V(\vec{r})
+\] 
+Where $V(\vec{r})$ is the potential energy, which should be dependent on the position of the mass. $v$ is the velocity in any direction as usual. Angular momentum,
+\[ 
+L = mr^2 \omega
+\] 
+Here $\omega$ is the angular speed from the axis of rotation. 
+
+We are ready to solve the problem of trajectory, shape of the path taken by a planet when it is moving around a star. 
+
+
+\subsection{ The Problem }
+\pk{ What is the shape of the trajectory when a planet of mass $m$ is moving around a star of mass $M $? Find the shape. }
+
+I want to melt down this solution into some methods that we will follow by \emph{Finding the equation of motion using the Energy equation.}
+
+\subsection{ Energy Method }
+Let the total energy be written in this form. 
+\[ 
+    E = \frac{1}{2} m \dot{r}^2 + V(r)
+\] Which only depends on one dimension $r$, and $ \dot{r} = \frac{\mathrm{d} r}{\mathrm{d} t}$ in short form, this is just the speed. This equation is perfect for the star-planet problem because here $r$ can be the distance between the two and $ \dot{r}$ is the \emph{radial speed}. If the rotation is of angular speed $\omega = \frac{\mathrm{d} \theta}{\mathrm{d} t} = \dot{\theta}$, hence, the tangential speed is $v_T = r\omega = r \dot{\theta}$.
+
+
+The problem can be handled by plugging everything in place, the total kinetic energy is the sum of the tangential and radial speed, the potential energy can be found later. 
+
+But now, if we take a derivative $ \frac{\mathrm{d} E}{\mathrm{d} t}$, what we find is,
+\[ 
+\frac{\mathrm{d} E}{\mathrm{d} t} =
+\frac{1}{2}m \left( \frac{\mathrm{d} }{\mathrm{d} r} \dot{r}^2 \right) 
++ 
+\frac{\mathrm{d} }{\mathrm{d} t} \left( V(r) \right) 
+\]
+By the chain rule of differentiation, we know,
+\[ 
+    \frac{\mathrm{d} f(x)}{\mathrm{d} t} = \frac{\mathrm{d} f}{\mathrm{d} x} \frac{\mathrm{d} x}{\mathrm{d} t}
+\]
+Hence,
+\[ 
+\frac{\mathrm{d} E}{\mathrm{d} t}=
+\frac{1}{2} m 
+\left( 2 \dot{ r} \ddot{ r } \right) + 
+\frac{\mathrm{d} V(r)}{\mathrm{d} r} \frac{\mathrm{d} r}{\mathrm{d} t}
+=
+m \ddot{ r } + \frac{\mathrm{d} V(r)}{\mathrm{d} r}
+\]
+We can factor out $ \dot{r}$, and because the energy is constant always, $ \frac{\mathrm{d} E}{\mathrm{d} t} = 0$, hence,
+\[ 
+    m \ddot{ r } = - \frac{\mathrm{d} V(r)}{\mathrm{d} r}
+\]
+This is a result which we could find in the other way. Notice that $\ddot{ r }= \frac{\mathrm{d} ^2}{\mathrm{d} t^2}r= a$ which is acceleration. Hence this above equation is just newton's second law from the energy conservation rule. We will use this extensively to find the total path of motion of planet.
+
+So let us summarize, 
+\theo{   }{ Energy Rule }{ If the total energy can be written as, 
+\[ 
+    E = \frac{1}{2} m \dot{r}^2 + \Pi(r)
+\]
+then,
+\[ 
+    m \ddot{r} = - \frac{\mathrm{d} \Pi(r)}{\mathrm{d} r}
+\] Please note, there must be a single dimension of choice only. 
+}
+\subsection{ Finding the Total Energy Equation }
+We are here with the energy,
+\[ 
+    E = \frac{1}{2} m v_T ^2 + \frac{1}{2} m v_r ^2 + V(r)
+\]
+This is, 
+\[ 
+    E = \frac{1}{2} m \left( \dot{r}^2 + r \dot{\theta}^2 \right) + V(r)
+\]
+Here is a problem, $ \dot{\theta}$ is another dimension (in polar coordinate $r,\theta$ are two separate dimension), but this isn't a big problem as we can use the Angular Momentum,
+\[ 
+L = mr^2 \dot{\theta} \to \theta = \frac{L}{mr^2}
+\]
+Putting this in place,
+\[ 
+    E = \frac{1}{2} m \dot{r}^2 + \frac{L^2}{2mr^2} + V(r)
+\]
+Now check that this problem is just one dimensional, because it only depends on $r$.
+
+\subsection{ The Solution }
+Total energy is here,
+
+\[ 
+    E = \frac{1}{2} m \dot{r}^2 + \frac{L^2}{2mr^2} + V(r)
+\]
+
+Now, the $ \dot{r}$ term is for the kinetic energy, the rest must be for potential energy, the dimension we depend on is $r$, hence,
+\[ 
+    E = \frac{1}{2} m \dot{r} ^2 + \Pi(r)  = \frac{1}{2} m \dot{r}^2 + \frac{L^2}{2mr^2} + V(r)
+\]
+Thus, the effective potential energy in this case, 
+\[ 
+    \Pi(r) = \frac{L^2}{2mr^2} + V(r)
+\]
+
+Hence, using the energy rule we found,
+\[ 
+    m \ddot{ r } = \frac{\mathrm{d} \Pi}{\mathrm{d} r} = \frac{L^2}{mr^3} - F(r)
+\]
+But the problem is, we have now found, \[ 
+\frac{\mathrm{d} ^2 r}{\mathrm{d} t^2}
+\]but to find the shape, we have to find, 
+\[ 
+\frac{\mathrm{d} ^2r}{\mathrm{d} \theta^2}
+\] We have to change the variable.
+
+No problem, we can use chain rule, 
+\[ 
+\frac{\mathrm{d} r}{\mathrm{d} t} = \frac{\mathrm{d} r}{\mathrm{d} \theta} \frac{\mathrm{d} \theta}{\mathrm{d} t} = \dot{\theta } \frac{\mathrm{d} r}{\mathrm{d} \theta} 
+\]
+And the math is easier to do using $u$ instead of $r$, if $r = \frac{1}{u}$. Let us solve for $\dot{ \theta }$ in terms of $u$, 
+\[ 
+\dot{\theta} = \frac{L}{mr^2} = \frac{Lu^2}{m}
+\]
+\[ 
+\frac{\mathrm{d} r}{\mathrm{d} t} =
+\left( L \frac{u^2}{m} \right) \frac{\mathrm{d} r}{\mathrm{d} \theta}
+=
+\frac{\mathrm{d} }{\mathrm{d} \theta} \left( \frac{1}{u} \right) = \left( \frac{Lu^2}{m} \right) \left( - \frac{1}{u^2} \frac{\mathrm{d} u}{\mathrm{d} \theta} \right) 
+\]
+This finally yields,
+\[ 
+\frac{\mathrm{d} r}{\mathrm{d} \theta} = 
+- \frac{L}{m} \frac{\mathrm{d} u}{\mathrm{d} \theta}
+\] 
+Hence, we can easily find,
+\[ 
+\frac{\mathrm{d} ^2 r}{\mathrm{d} t^2} = - \frac{L}{m} \frac{\mathrm{d} }{\mathrm{d} t}
+\left( \frac{\mathrm{d} u}{\mathrm{d} \theta} \right) =
+- \frac{L}{m} \left( \frac{\mathrm{d} 
+\frac{\mathrm{d} u}{\mathrm{d} \theta}
+}{\mathrm{d} \theta} \cdot  \frac{\mathrm{d} \theta}{\mathrm{d} t} \right) = - \frac{L}{m} \frac{\mathrm{d} ^2 u}{\mathrm{d} \theta^2 } \dot{\theta}
+=
+- \frac{L}{m} \left( \frac{L}{mr^2} \right) \frac{\mathrm{d} ^2 u}{\mathrm{d} \theta^2}
+\] 
+So,
+\[ 
+\frac{\mathrm{d} ^2 r}{\mathrm{d} t^2} =
+- \left( \frac{L^2}{m^2 r^2} \right) \frac{\mathrm{d} ^2 u}{\mathrm{d} \theta ^2}
+\]
+Using this in the equation of motion, (the equation that finds $\ddot{ r }$ ), 
+\[ 
+    - \frac{L^2}{m r^2} \frac{\mathrm{d}^2 u}{\mathrm{d} \theta^2} = \frac{L^2}{m}u^3 -F(u)
+\]
+\[ 
+    \frac{\mathrm{d} ^2 u}{\mathrm{d} \theta^2} = \frac{m}{L^2 u^2} F(u) - u
+\]
+
+So, the final differential Equation,
+\[ 
+\boxed{ 
+    \frac{\mathrm{d} ^2 u}{\mathrm{d} \theta^2} + u - \frac{m}{L^2u^2}F(u) = 0
+}
+\]  
+This can also be seen as,
+\[
+    \boxed{ \frac{\mathrm{d} ^2}{\mathrm{d} \theta^2} \left(\frac{1}{r} \right) + \frac{1}{r} - \frac{mr^2}{L^2 } F\left( r \right) =0}
+\]
+
+
+\subsection{ The Differntial Equation }
+What is the use of this differential equation? Using this, we can solve for $r(\theta)$. This is the polar equation that will trace the path of the particle in gravitational force. Now, in case of Newtonian Gravity, the force $F(r)$ is, 
+\[ 
+    F (r) = -\frac{Gm_1m_2}{r^2} \to F(u) = - \frac{Gm_1m_2}{1} u^2 = - G m_1 m_2 u^2
+\] 
+The equation is, then,
+\[ 
+\frac{\mathrm{d} ^2 u}{\mathrm{d} \theta^2} + u + \frac{m}{L^2 u^2} G m_1 m_2 u^2 = 0
+\]
+Solving,
+\[ 
+\frac{\mathrm{d} ^2 u}{\mathrm{d} \theta ^2} + u + k = 0
+\]
+Here $k$ is used to replace some constant terms, we don't at all need to deal with them.
+We need to \textbf{solve} this differential equation using basic ninja techniques, the reason is because the direct and general solution is hard to find and uses difficult techniques, we can solve it using some basic general physics knowledge.
+
+For the types of differential equations we are seeing here, they can be solved by assuming,
+\[ 
+u = u_g + u_p
+\]
+Here $u_g$ is the ``Homogenous" solution. Why? It's just the method. $u_p$ is the particular solution. Using this the method can be shown if we use $u = u_g + u_p$ in the differential equation,
+\[ 
+\frac{\mathrm{d} ^2u_g}{\mathrm{d} \theta^2} + \frac{\mathrm{d} ^2 u_p}{\mathrm{d} \theta^2} + u_g + u_p + k = 0
+\]
+
+Now, we will forumulate $u_g$ and $u_p$ so that,
+\[ 
+\frac{\mathrm{d} ^2 u_g}{\mathrm{d} \theta^2} + u_g = 0
+\]
+\[ 
+\frac{\mathrm{d} ^2 u_p}{\mathrm{d} \theta^2} = 0 \quad \text{and} \quad u_p + k = 0 \to u_p = -k
+\]
+Solution to $u_g$ is,
+\[ 
+    u_g = A \cos(\theta + \phi) 
+\] If you now check these equations are consistent with the main equation and can be solved separately. 
+
+This means the solution is,
+\[ 
+    u = A \cos \left( \theta + \phi \right) - k
+\]
+This solution is a standard solution to the differential equation, $\ddot{ r }+ r = 0$
+And using $r$ instead of $u$,
+\[ 
+    r = \frac{1}{A \cos \left( \theta + \phi \right) - k}       
+\]
+Get rid of random constants and simplify it, I will take factor of $-k$, set $-\frac{A}{k} = e$, and by putting $\alpha$ as $\frac{1}{-k}$, setting initial $\theta = 0$ hence, $\cos\phi  \to \phi = 0$ this shows,
+\[ 
+    r = \frac{1}{-k \left( 1 + e \cos \theta \right) } 
+\]
+\[ 
+r = \frac{\alpha}{1 + e \cos \theta}
+\]
+Let at $\theta = 0$, $r=r_0$, this is,
+\[ 
+r = r_0 = \frac{\alpha}{1 + e}
+\]
+If $\alpha = r_0 \left( 1 + e \right) $, then, 
+\[ 
+    r_0 = \frac{r_0 \left( 1 + e \right) }{1 + e} = r_0
+\]
+This solves, the equation so that, 
+\[ 
+    \boxed{ r = \frac{r_0 \left( 1 + e \right) }{1 + e \cos \theta}}
+\]
+This $r$ is a solution to the equation. What if $e=0$? 
+\[ 
+r = r_0 
+\] That means for all  $\theta$, the distance is always going to be $r_0$, that means circle.It is very interesting to notice. And what if we plot our newly found equation $r(\theta)$ in a graph paper? Let us plot the current mathematica code for some random values.
+
+\begin{verbatim}
+r0 = 10
+e = 0.7 
+PolarPlot[(r0 * (1 + e)/(1 + e*Cos[\[Theta]])), {\[Theta], 0, 2*Pi}] 
+\end{verbatim}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{aellipse.pdf}
+    \caption{Plotting the function we found with $r_0=10$ and $e = 0.7$}
+    \label{fig:}
+\end{figure}
+
+Which looks like an ellipse and it is an ellipse. Looking closely, the center is the position of the star, relative to it we measure $r$, and the minimum distance is $r=10$ which is $r_0$. Maximum distance from center is at $\theta = 180^{\circ}$, which is, 
+\[ 
+r = r_0 \frac{1+ e}{1 - e}
+\]
+Let us use another ninja technique, say maximum distance from the focus is, $a + ea$ or $a \left( 1 +e \right) $ and lowest distance is $a - ea$ or $a \left( 1 -e \right) $, then, 
+\[ 
+    r_0 = a \left( 1 -e \right) 
+\] 
+And maximum,
+\[ 
+    r_{ max } = a\left( 1 -e \right) \frac{1+e}{1-e} = a\left( 1 + e \right) 
+\] That is valid. 
+This $a$ has a special name, which is semi major axis. Why? Add  the minium and maximum distance,
+\[ 
+    D = a(1+e) + a(1-e) = 2a
+\]Here, $D$ is the addition of minimum and maximum distance, which is just the horizonatal line that joins the two extreme points of the ellipse, and this line that joins the two ends is the major axis. Half of it is $a$, thus $a$ is called  \emph{Semi Major Axis}.
+
+
+The shape of this sort of path is more different than what we found now.
+\\
+\solu{ Hence the Path that a planet would trace around a Star is an \emph{Ellipse}  
+
+The path is give in the polar coordinates as a funciton $r\left( \theta \right) $, which is, by $r_0$ being the minimum distance to center,
+\[ 
+r\theta = r_0 \frac{1 + e}{1 + e \cos \theta} 
+\]
+In terms of semi major axis $a$, that is more convinient in Astronomy,
+\[ 
+    r\left( \theta \right)  = a \frac{1 - e^2}{1 + e \cos \theta}
+\]
+The equation also precludes the center of the reference is one of the focus of the ellipse.
+}
+
+Now a small add to the story, note  that this differential equation can also be used when there is more than gravitational force, because all we need is a general $F(r)$ equation that can be anything. Hence, we can also find General Relativistic Gravity Paths, because in General Relativity, the Equivalent force (which is not technically force though) can be written as,
+\[ 
+    F(r) = k_1 \frac{1}{r^2} + k_2 \frac{1}{r^3} = k_1 u^2 + k_2 u^3
+\]
+We will solve it quickly using previous techniques, 
+Let us write the differential equation of path, in a more small form,
+\[ 
+\partial_\theta^2 u = \frac{\partial ^2u}{\partial \theta^2}
+\]\footnote{ Inspired from covariant derivative $\partial_{ \vec{r} } \lambda$. }
+Using this, the equation we get for the given $F\left( r \right) $, 
+\[ 
+    \partial_\theta^2 u + u + \frac{\alpha}{u^2} \left( k_1 u^2 + k_2 u ^3\right) = 0
+\]
+Simply writing this we have,
+\[ 
+\partial_\theta^2 u + u + \alpha_1  + \alpha_2 u=0
+\]
+This is just,
+\[ 
+\partial_\theta^2 u + \omega^2 u + \alpha = 0
+\]
+We tweaked the name of constants a little bit  to get a nice format. Obviously $\omega^2 = 1 - \alpha_2$, and I replace $\alpha_1$ with $\alpha$. Using the homogenous and particular solution method, we get something like,
+\[ 
+    u = A \cos\left( \omega t \right) + C
+\] Here $\omega t $ serve $\theta$, both are same. 
+Hence, this also can be shown to have a form,
+\[ 
+    r = \frac{r_0}{1 + \epsilon \cos\left( \omega t \right) }
+\]
+
+
+
+
+
+
+
+\subsection{ Few more thoughts on it }  
+Now because this ellipse equation is a result, it makes me think why it has to be?
+
+Well someone else has answered this question before us, it's Euler and Lagrange and other smart people.
+
+The reason why the solution is an Ellipse is because there is some property in ellipse that else don't have.
+
+I mean, this orbit could have been like a squre, or a rectangle form, or it could be stricly a circle whatever the cause be. But it's elliptical. And not just elliptical to be honest, it can be any conic section because of the form $r = \frac{1}{\left( 1+ e \cos \theta \right) ^2}$. 
+
+Now from Euler Lagrangian Equation, and the Idea of Analytical Mechanics, there is a quantity called the action,
+\[ 
+    A = \int_{ }^{} L[t, \dot{r}, \ddot{ r }] \mathrm{d} t  
+\]
+This quantity $A$ has to be Stationary (or minimum or maximum) for it to be appearing in nature. Hence, we need to know the special equation $L$ that will make $A $ stationary with respect to others possible values.
+
+$L$ directly depends on the equation of the path, it's shape. For every point along the trajectory, $L$ has some value. And it is such that, $A$ always has stationary value. 
+
+For an integral like A (as we wrote) to be stationary, the function $L$ has to satisfy this equations, 
+
+\[ 
+\frac{\mathrm{d} }{\mathrm{d} t} \frac{\partial L}{\partial \dot{r}} = \frac{\partial L}{\partial r}
+\]
+
+For mechanics, we know the value of $L$, which is,
+\[ 
+L = T - V
+\]
+Probably that's how we solve this problem.
+
+We can try calculating the value of $A$ for anyother Unorthodox path, like a square instead of ellipse, it would probably have a non stationary value for $A$. 
+
+
+\section{ A very cool problem }
+We almost always would ignore curvature of Earth while solving any projectile problem. The problem be like,
+
+\pk{ We through a mass $m$ from this and this position, where will it land? \emph{Ignore Curvature of Earth}, and the angle of throwing the mass is $\theta$.  }
+
+Now, it's not hard to use the equation of Parabolic Trajectory and solve it (I recall writing a handout on this). But what if we don't ignore curvature of Earth?
+
+\pk{ Solve the problem of mass falling as before, but \emph{Don't Neglect Curvature of Earth}.  }
+
+It's, to be honest, not too hard to solve either.
+
+Because, the central feature is, in case of such non approximating cases, the projectile is just elliptical in nature. 
+
+\begin{figure}[ht!]
+    \centering
+    \incfig{projectile-in-reality-is-just-an-ellipse.}
+    \caption{Projectile in reality is just an ellipse.}
+    \label{fig:projectile-in-reality-is-just-an-ellipse.}
+\end{figure}
+
+
+The focus of the ellipse is just the center of earth, and solving this for a spherical earth is very easy because $r=r$ in the landing and falling case. So, even though avoiding an approximation, we still don't have a very tough situation (which is kinda rare).
+
+Thanks to Arnab vai for sharing this idea. 
+
+
+\section{ The problem of Illumination and Never missing another shot }
+\pk{ Given a bounded region, which is made by Walls. These wall's are reflective. Given at any point inside the bounded region Walls, there is a point like light bulb, from which light radiates, find all the points in the region where light doesn't reach, and it is dark. }
+
+Well, simply said, if the region is square, then if any light source is inside, all points in the region is going to be illuminated. Now for random boundary, we need the dark points. 
+
+Ellipses has this capability. That there is a focus. And if you light a bulb just at the focus point, all the light will eventually end up in the other focus. 
+
+Well, you can make a billiard board, and shape it in ellipse. Now, if you cut a hole in one of the focus, then hitting the ball from the other focus will always and always put that ball in hole.
+
+To me it was a fascinating thing, so should to you (unless you are Terry Tao and have derived it yourself at the age of three :yaw: ) 
+
+Check "Elliptical Pool Table" by Numberphile in Youtube. 
+
+Now, for the illumination problem, it also has a Numberphile video. I won't give the links, I don't want to open the browser now, but you can find it using the "illumination problem" keyword. 
+
+Roger Penrose (boss music begins) solved it. The problem is tackled using ellipses. If you accompany yourself with the idea, that light emitted from Focus will end up in the other focus, you can have a clearer understanding of the Numberphile video I mentioned.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{ Area of Ellipse }
+Keplar's Laws has some dependency on the area of ellipses. This motivates us to find the area of it.
+
+Now, we can trick the solution and find the area very quickly. But in my case, just after I derived the polar coordinate equation (using the string method), I tried deriving the area from that using brute force. 
+
+\begin{figure}[ht!]
+    \centering
+    \incfig{area-of-ellipse-in-polar-coordinate-form}
+    \caption{Area of ellipse in polar coordinate form}
+    \label{fig:area-of-ellipse-in-polar-coordinate-form}
+\end{figure}
+
+The small triangle has area $\mathrm{d} A$ which is,
+
+\[ 
+    \mathrm{d} A = \frac{1}{2} r \left( r \mathrm{d} \theta \right) 
+\]
+The complete area with the full integral,
+\[ 
+A=\int_{0}^{2 \pi} \frac{1}{2} r^2 \mathrm{d} \theta 
+\]
+Now, we have $r$, so, ignoring all constant terms, we have to solve for an integral,
+\[ 
+    I = \int_{0 }^{2\pi} \left( \frac{1}{1 + e \cos \theta} \right) ^2 \mathrm{d} \theta 
+\]
+And here it comes, the integral that took me a very good amount of time to be unable to solve eventually. 
+
+It's a tough integral. I thought using $\beta$ functions or $\Gamma$ function might work, but no they don't.
+
+I thought that expanding a Taylor Series had potential but I didn't try it. I had to look quite a while until someone posted a nicely written solution in Physics Stack Exchange. 
+
+Here is the solution, from someone in Physics Stack Exachange.
+
+Start by forgetting unncessary stuffs,
+\[ 
+    I = \int_{0}^{\theta} \frac{\mathrm{d} \theta}{(1 + e \cos \theta)^2} 
+\]
+Now, change the variable with the most epic substitution ever (that I have no idea why),
+\[ 
+\tan \frac{\theta}{2} = z \to \cos \theta = \frac{1 - z^2}{1 + z^2}
+\]
+\[ 
+\mathrm{d} \theta = \frac{z \mathrm{d} z}{1 + z^2}
+\]
+Now the integral is,
+\[ 
+    I = \int_{ }^{} \frac{\left( 1  + z^2 \right) \mathrm{d} z}{\left(z^2 + 
+    \frac{1 + e}{1-e} \right)^2
+    }  
+\]
+Then, making the thing a little more easy by,
+\[ 
+\frac{1+e}{1-e} = k
+\]
+by using ``Ostrogradsky's" method, this integral is now,
+\[ 
+I = \left[
+    \frac{1-k}{2k} \cdot \frac{\tan \frac{\theta}{2}}{\tan ^2 \frac{\theta}{2} + k} +
+    \left( \frac{1+k}{2k} \right) + \frac{1}{\sqrt{k} }\cdot \arctan \left(  \frac{\tan \frac{\theta}{2}}{\sqrt{k} }  \right)  
+\right]_{ 0 }^{ \theta }
+\]
+Using appropriate constants that we were ignoring so far, 
+\[ 
+    \boxed{  A = \pi a b}
+\]
+Where $a$ is Semi Major Axis and $b$ is Semi Minor Axis.
+
+I don't know the ``Ostrogradsky's" method, I think that a good manipulation of the Beta and Gamma function might be useful to solve this integral. What is Beta and Gamma function? They are just some fancy method I found in Flammable Maths youtube channel in the video where he solves the Pendulum equation of motion exactly,
+\[ 
+\ddot{ \phi } + \omega^2 \sin \phi = 0
+\]
+There is use of this special equation which is a form of beta function,
+\[ 
+    \beta\left( m,n \right) = 2 \int_{0}^{\frac{\pi}{2}} \sin ^{2m -1} \theta \cdot  \cos ^{2n-1} \theta \mathrm{d} \theta 
+\]
+And the $\beta$ function itself is, in relation to $\Gamma$ function.
+\[ 
+    \beta(m,n) = \frac{\Gamma\left( n \right) \Gamma\left( m \right) }{\Gamma\left( m+n \right) }
+\]
+And $\Gamma$ function is,
+\[ 
+    \Gamma(n) = \int_{0}^{\infty} x^{n-1} e^{-x} \mathrm{d} x 
+\] 
+Another form of it is,
+\[ 
+    \Gamma(n) = \lim_{m \to \infty} \frac{1\cdot 2\cdot 3\cdot \ldots m}{n \left( n+1 \right) \left( n+2 \right) \ldots \left( n+m \right) } m^{n}
+\]
+The thing is, these can be manipulated in various ways that give solutions to tough integrals. 
+Let me term a problem and show it's solution,
+\pk{ 
+Solve the integral,
+\[ 
+I = \int_{0}^{1}  \frac{\mathrm{d}  x}{\sqrt{1 - x^{n}} } 
+\]
+}   
+\solu{ To evaluate, use,
+\[ 
+x^{n} = \sin^2\theta
+\], that yields,
+\[ 
+    \mathrm{d} x = \frac{2}{n} \left( \sin \theta \right) ^{\left( 2-n \right) / n } \cos \theta \mathrm{d}  \theta
+\]
+ Then putting this in the place of integral,
+ \[ 
+     I = \frac{2}{n} \int_{0}^{1} \left( \sin \theta \right) ^{\left( 2 - n \right) / n} \mathrm{d} \theta 
+ \]
+ Now, we know this can be represented as a $\beta$ function, because,
+ \[ 
+     \beta \left( m,n \right) = 2 \int_{ 0 }^{\frac{\pi}{2}} \sin ^{2m-1} \theta \cos ^{2n-1}\theta \mathrm{d}  \theta
+ \] 
+ Using appropriate $m,n$ values, we can use this to solve the required integral, which is,
+ \[ 
+     I = \frac{2 \Gamma\left( \frac{1}{2} \right) \Gamma\left( \frac{1}{n} \right) }{n \cdot  2 \Gamma\left( \frac{1}{n} + \frac{1}{2} \right) }
+ \] 
+ Using that factorial or numerical definition, it's not hard to find out the solution numerically given the value of $n$.
+}
+
+\section{ Ellipse and Cartesian Format }
+Coordinate transformation is an interesting thing. Right into it, to \emph{Transform from Polar to Cartesian}, this is used,
+\[ 
+r \to \sqrt{x^2+ y^2} 
+\]
+\[ 
+\cos \theta \to \frac{x}{\sqrt{x^2 + y^2} }
+\]
+\[ 
+\sin \theta \to \frac{y}{\sqrt{x^2+y^2} }
+\]
+\[ 
+\tan \theta \to \frac{y}{x}          
+\]  
+The transformation is done, for example like this, we have a polar function, and we need to replace all the items with their cartesian counterpart,
+\[ 
+ r = \frac{\alpha}{1 + e \cos \theta} \to \frac{\alpha}{1 + e \frac{x}{\sqrt{x^2 + y^2} }}
+\]
+This is nice, but the real technique is by using Jacobian. I can't resist the temptation to slightly put it here.
+
+\subsubsection{ Jacobian }
+So, I learned in Tensor Calculus that a unit vector is just $\vec{e}_x = \frac{\mathrm{d} }{\mathrm{d} x}$ operator. I had been editing a Tensor text where I described it's use. But anyway, using Chain rule, we can change the variables into something else.
+\[ 
+\frac{\mathrm{d} }{\mathrm{d} x} = \frac{\mathrm{d} r}{\mathrm{d} x} \frac{\mathrm{d} }{\mathrm{d} r} + 
+\frac{\mathrm{d} \theta}{\mathrm{d} x} \frac{\mathrm{d} }{\mathrm{d} \theta}
+\]
+\[ 
+\frac{\mathrm{d} }{\mathrm{d} y} = \frac{\mathrm{d} r}{\mathrm{d} y} \frac{\mathrm{d} }{\mathrm{d} r}
++ \frac{\mathrm{d} \theta}{\mathrm{d} y} \frac{\mathrm{d} }{\mathrm{d} \theta}
+\]
+So, what you really get to use is, 
+\[ 
+\hat{x} = \frac{\mathrm{d} r}{\mathrm{d} x} \hat{r} + \frac{\mathrm{d} \theta}{\mathrm{d} x} \hat{\theta}
+\]
+\[ 
+\hat{ y} = \frac{\mathrm{d} r}{\mathrm{d} y} \hat{r} + \frac{\mathrm{d} \theta}{\mathrm{d} y} \hat{ \theta}
+\]
+Here, this system of equation can be written as a matrix form
+\[
+    \begin{pmatrix} \hat{x} \\ \hat{y} \end{pmatrix} =
+    \begin{pmatrix} \frac{\mathrm{d} r}{\mathrm{d} x} & 
+        \frac{\mathrm{d} \theta}{\mathrm{d} x} \\[1ex]
+    \frac{\mathrm{d} r}{\mathrm{d} y} & \frac{\mathrm{d} \theta}{\mathrm{d} y}
+\end{pmatrix} 
+\begin{pmatrix} \hat{r} \\ \hat{\theta} \end{pmatrix}
+\]
+Here the Jacobian is,
+\[ 
+\mathbf{ J } =
+\begin{pmatrix} \frac{\mathrm{d} r}{\mathrm{d} x} & \frac{\mathrm{d} \theta}{\mathrm{d} x} \\[1em]
+    \frac{\mathrm{d} r}{\mathrm{d} y} & \frac{\mathrm{d} \theta}{\mathrm{d} y}
+\end{pmatrix} 
+\]
+This Jacobian matrix will make a Cartesian Transformation. So can be done in reverse. That will be a Backward Transformation. 
+
+
+
+Now we can leave Jacobian for a minute, and solve the polar equation,
+\[ 
+r = \frac{\alpha}{1 + e \frac{x}{\sqrt{x^2+ y^2} }}
+\]
+This equation can be reduced to a form like,
+\[ 
+    \frac{\left( x -d \right) ^2}{a^2} + \frac{y^2}{b^2} = 1
+\]
+Here, $x-d$ stands for the feat that our origin is located $d$ off centered from the Center of the ellipse. If we directly transform the polar equation, the thing is the Focus of the Ellipse is origin. But after the cartesian tranform is found, it tries to plot the ellipse by making it's center as the origin. That's why we get $d$, and if $a$ is semi major axis and $e$ is eccentricity, it notable that $d=ae$. So, if we plot from the center of ellipse,
+\[ 
+    \boxed{ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1}
+\]
+Many textbook without context just leave this equation. 
+
+Here, the constant $a$ with $x^2$ is the \emph{Semi Major Axis}. And $b$ is Semi Minor Axis. That can be easily proved using limiting case, like, if $y=0   $, 
+then obviously $\frac{x^2}{a} = 1$ that means, $x = a$ and $x = -a$, which is consistent and makes sense. 
+\section{ Adiabatic Invariant and Phase Space }
+
+Phase space is a special type of plot, made by Momentum versus position graph. The area under a Momentum versus position graph stays constant most of the times. 
+
+Just right into the point, imagine a spring mass system. The total energy is obviously constant and the mass is oscillating. We assume no external force like gravity.
+
+Now, the energy is,
+\[ 
+E = \frac{1}{2} m v^2 + \frac{1}{2} k x^2
+\]  
+Momentum is, 
+\[ 
+p=mv \to p^2 = m^2 v^2
+\]
+Using the equation of momentum in the Energy equation, we get,
+\[ 
+E = \frac{p^2}{2m} + \frac{1}{2} kx^2
+\]
+Now, just bringing down the $E$ in the equation makes a cool thing,
+\[ 
+\frac{p^2}{2mE } + \frac{x^2}{2 k^{-1} E} = 1
+\]
+I forcefully write $k = \frac{1}{k^{-1}}$ so that all constants are below. 
+
+Now there is some cool stuffs happening, if we plot $p$ and $x$, then this above equation says that for an oscillating system, the plot would be an ellipse. The semi major axis is going to be $\sqrt{2 k^{-1} E} $ and the semi minor would be $\sqrt{2 m E} $. Not only that, you can verify using the energy conservation law that the maximum possible momentum is when the coordinate of the mass $x=0$. So, you can use similar arguments and get the maximum values, which is also the major and minor values for each.
+\[ 
+p_0 = \sqrt{2mE} 
+\]
+\[
+    x_0 = \sqrt{2 k^{-1} E} 
+\]
+Now, Adiabatic Invariance and other high level physics say that,
+\[ 
+\oint p \ \mathrm{d}  x = \text{Const}
+\]
+Which means the Area under the plot is a constant. Well,
+\[ 
+A = \pi p_0 x_0 = 2 \pi E \sqrt{\frac{m}{k}} 
+\] 
+Which is constant given $E$ is constant. 
+
+\section{ The Easy but Sad Physics Cup problem and Runge Lenz Vector }
+
+This year came out one of the Physics Cup problems that many guys could solve. I tried hard,
+but I couldn't do it within the time given, which was great enough, but not great enough for my brain to function, :yaw:
+
+Anyway we shouldn't care useless stuffs, here is one of the prime idea that works behind the creative solution by Pr. Jaan Kalda.
+
+There is this vector, that vector relates and eccentricity vector to other properties. For the mechanics case,
+\[ 
+\vec{e}  = \frac{\vec{L} \times  \vec{v}}{GM m } + \vec{e}_r = \text{Const}
+\]
+
+
+I worked my ``<my-first-middle-last-name's-first-letters>"-off to derive the Runge Lenz vector, I woke up very early in the morning and kept deriving equations to find it, using Fundamental Astronomy as a reference, I could derive something decently similar. 
+
+Vectorally the derivation is little rigorous, but we can deal with that. 
+
+\subsection{ Derivation }
+I will make subsections in this section called ``Derivation". Please read each subsection title because the derivation is little long and there is possibility you forget what were you doing (so did I). 
+
+We will do these, 
+\begin{itemize}
+    \item Study the equation of motion from Gravity first.
+    \item Check whether $m \vec{r} \times  \dot{\vec{r}}$ is constant in gravity or not.
+    \item Compute $ \dot{\vec{p}} \times  \vec{L} $ 
+    \item Find $\vec{r}\cdot \dot{\vec{r}}$ that becomes necessary to solve.
+    \item Derive that, $ \frac{\mathrm{d} }{\mathrm{d} t} \vec{p} \times  \vec{L} = \dot{\vec{p}}\times  \vec{L}$
+    \item Put together everything 
+    \item Find the Ellipse equation
+\end{itemize}
+
+\subsubsection{ Find the Gravity Equation of Motion }
+Let there be masses $m_1$ and $m_2$. The mass $m_1$ is big so replace it with $M$ and the otehr with $m$ instead. I will use it interchangebly. 
+
+So, the equation of motion can be written from the Equation of Newton's Gravity.
+\[ 
+    m_1 \ddot{\vec{r_1}} = G m_1 m_2 \frac{\hat{r}}{r^2}    
+\]
+\[ 
+m_2 \ddot{\vec{r_2}} =- G m_2 m_1 \frac{\hat{ r}}{r^2}
+\]
+Here, the position for $m_1$ and $m_2$ is $\vec{r}_1$ and $\vec{r}_2$, hence, the relative position with respect to $m_1$ is given by,
+\[ 
+    \vec{r} = \vec{r_2} - \vec{r_1} 
+\]
+So, the relative acceleration is,
+\[ 
+\ddot{\vec{r_2}} - \ddot{\vec{r_2}}= -G m_1 \frac{\hat{ r}}{r^2}  - G m_2 \frac{\hat{ r}}{r^2}
+\]
+This gives us the first important equation,
+\[ 
+\boxed{ \ddot{\vec{r}}  = - \mu \frac{\vec{r}}{r^3}}
+\]
+With, 
+\[ 
+    \mu = G\left( m_1 + m_2 \right) 
+\]
+Given $m_1 \gg m_2$, $\mu = GM$,
+Hence, this equation of motion is just,
+\[ 
+\boxed{ \ddot{\vec{r}} = -GMm \frac{\vec{r}}{r^3} }
+\]
+
+
+The equation $ \ddot{\vec{r}} = - \mu \frac{\vec{r}}{r^3}$ is important, because it's the Pure Vectoral Equation of Motion. Most of our job when trying to generally solve Planetary Mechanics problem is finding a form of $\vec{r}$ that satisfies it.
+
+And we are now assured the solution of $r$ is actually just an Ellipse's plot. 
+
+The level of purity is clear from seeing how straight this equation speaks out.
+
+Now, as a part of making fun with expressions I made an expansion of the Equation of motion.
+\[ 
+\frac{\mathrm{d} ^2 x}{\mathrm{d} t^2} \hat{ e} _x + 
+\frac{\mathrm{d} ^2 y}{\mathrm{d} t^2} \hat{ e} _y + 
+\frac{\mathrm{d} ^2 z}{\mathrm{d} t^2} \hat{ e} _z  = 
+- \mu 
+\frac{x \hat{e}_x + y \hat{e}_y + z \hat{e}_z}{ \left( x^2 + y^2 + z^2 \right) ^{\frac{3}{2}}}
+\]
+This equation looks dauting but this is funnily just $ \ddot{\vec{r}} = - \mu \vec{r}/r^3$
+
+We need a constant vector relationship from here. 
+
+\subsubsection{ Angular Momentum Constant Check }
+Let us just make an educated guess and start with letting $\vec{L}= m \vec{r} \times  \vec{v}$
+Now, the reasons it is constant can be shown with this,
+\[ 
+\dot{\vec{L}} = m \vec{r} \times  \ddot{\vec{r}} + 
+m \dot{\vec{r}} \times  \dot{\vec{r}}
+\]
+Remembering that $ \dot{\vec{r}} = \vec{v}$. 
+And, cross product with it self is zero. And we here we are left with an equation which is the Torque equation behind the curtain.
+
+So, we have this,
+\[ 
+\dot{\vec{L}} = m \vec{r} \times \ddot{\vec{r}} = 0
+\] 
+The proof is also very close, just putting the gravity equation,
+\[ 
+    \dot{\vec{L}} = m \vec{r} \times  \left( - \mu \frac{\vec{r}}{r^3} \right) 
+    = \left( - \mu \frac{m}{r^3} \right) \vec{r} \times  \vec{r} = 0
+\] 
+Here please be noted we are measuring with respect to the first body $M$ which is also $m_1$,and the angular momentum is of $m_2$, that is the second body. 
+
+If you do the analysis clearly, then it will give some intuition to you that is hard for me to explain. But anyways, all you need to know for the Runge Lenz vector derivation is that,
+\begin{itemize}
+    \item $ \dot{\vec{L}} = 0$ angular momentum for Gravity is conserved. And also note that $\vec{L}$ is perpendicular to the plane of orbit (because of $\vec{r} \times  \vec{v}$ format.
+    \item $ \ddot{\vec{r}} $ is parallel to $\vec{r}$ because of the Gravitational force.
+\end{itemize}
+
+\subsubsection{ Compute $ \dot{\vec{p}} \times  \vec{L} $ }
+First of all we shall remember that, ignoring vectors, the gravitational force magnitude,
+\[ 
+    \frac{\mathrm{d} p}{\mathrm{d} t} = \dot{p} = f\left( r \right) 
+\]
+So, let us multiply the force $ \dot{p}$ with $L$, here we will definitely consider using vectors,
+\[ 
+    \dot{\vec{p}} \times  \vec{L} = \left( f(r) \frac{\vec{r}}{r} \right) \times  \left( \vec{r} \times  \vec{p} \right) 
+\]
+\[ 
+    = f(r) \frac{\vec{r}}{r} \times  \left( \vec{r} \times  m \dot{\vec{r}} \right) 
+\]
+Bringing the $m$ with $f(r)$,
+\[ 
+    = m \frac{f(r)}{r} \ \vec{r} \times \left( \vec{r} \times  \dot{\vec{r}} \right) 
+\]
+For vector cross, 
+\[ 
+    \vec{a} \times  \left( \vec{b} \times  \vec{c} \right) = \vec{b} \left( \vec{a}\cdot \vec{c} \right) - \vec{c} \left( \vec{a}\cdot \vec{b} \right) 
+\]
+So, we get,
+\[ 
+    = \frac{m f(r)}{r} \left( \vec{r} \left( \vec{r} \cdot  \dot{\vec{r}} \right) - \dot{\vec{r}} \left( \vec{r}\cdot  \vec{r} \right)  \right) 
+\]
+
+%put the reason here,
+Everything is quite okay other than $ \dot{\vec{r}} \cdot  \vec{r}$, we need to know what is it's cause or what it means.
+
+
+\subsubsection{ Solve $\vec{r}\cdot \dot{\vec{r}}$ }
+Now, going to the definition,
+\[ 
+\frac{\mathrm{d} \vec{r}}{\mathrm{d} t} = \dot{\vec{r}}
+\]
+Let us forget this dot notation and use $\vec{v}$. So, $\vec{v}= v \hat{v}$. Similarly,
+$\vec{r} = r \hat{r}$. Let $\hat{r} $ and $\hat{v}$ make $\theta$ angle with themselves.
+Then, for one moment of time,
+\[ 
+    \vec{r}\cdot \dot{\vec{r}} = \vec{r} \cdot \vec{v} = r v \left( \hat{r} \cdot \vec{v} \right) = r v \ \cos \theta
+\]
+Here is the trick,
+\[ 
+    \vec{r} \cdot  \dot{ \vec{r}} = r \left( v \cos  \theta\right) 
+\]
+Here $v \cos \theta $ is just the projection of $\vec{v}$ on the vector $\vec{r}$. This means, $v \cos \theta$ is just the magnitude of the change of the length of $r$. That is cool, because we don't have to deal with the vector form anymore. The rate of change of the length of $\vec{r}$ be $ \dot{r}$. Hence, 
+\[ 
+r v \cos \theta = r \dot{r}
+\]
+And so, we have,
+\[ 
+\vec{r} \cdot  \dot{\vec{r}} = r \dot{r}
+\]
+The dot of the two vector is just the distance of the orbiting mass time the rate of change of distance from our position. There is more rigourous solution to the $\vec{r} \cdot  \dot{\vec{r}}$, but this one is way intuitive.
+
+Now using this following result,
+\[ 
+    = \frac{m f(r)}{r} \left( 
+        \vec{r} \left( r \dot{r} \right) - 
+        \dot{\vec{r}} r^2
+    \right) 
+\]
+If we pull a factor $-r^3$, then,
+\[ 
+    = - m f(r) r^2 \left( \frac{ \dot{\vec{r}}}{r} - \frac{ \dot{r}}{r^2} \vec{r} \right)  
+\]
+
+Now, notice that,
+\[ 
+\frac{\mathrm{d} \vec{r}/r}{\mathrm{d} t} = \frac{ \dot{\vec{r}}}{r} - \frac{ \dot{r}}{r^2} \vec{r}
+\]
+
+Hence, we have,
+\[ 
+    = - m f(r) r^2 \ \frac{\mathrm{d} }{\mathrm{d} t}\left( \frac{\vec{r}}{r} \right) 
+\]
+So,
+\[ 
+    \dot{\vec{p}} \times  \vec{L} = - m f(r) r^2 \ \frac{\mathrm{d} }{\mathrm{d} t} \left( \vec{r}/r \right) 
+\]
+Now, we know that,
+\[ 
+    f(r) = - \frac{\mu}{r^2}
+\]
+So,
+\[ 
+    \dot{\vec{p}} \times  \vec{L} = m \mu \frac{\mathrm{d} }{\mathrm{d} t} \left( \vec{r}/r \right) 
+\]
+
+\subsubsection{ Use the information that $\vec{L}$ is constant }
+But check this out, $\vec{L}$ is known to  be constant, thus,
+\[ 
+    \frac{\mathrm{d} }{\mathrm{d} t} \left(  \vec{p} \times  \vec{L} \right) = 
+    \frac{\mathrm{d} \vec{p}}{\mathrm{d} t} \times  \vec{L} + 
+    \vec{p} \times  \frac{\mathrm{d} \vec{L}}{\mathrm{d} t}
+\]
+\[ 
+    \frac{\mathrm{d} }{\mathrm{d} t} \left( \vec{p} \times  \vec{L} \right) = \dot{\vec{p}}\times  \vec{L}
+\]
+So, we can now write,
+\[ 
+    \frac{\mathrm{d} }{\mathrm{d} t} \left( \vec{p} \times  \vec{L} \right) =
+    \frac{\mathrm{d} }{\mathrm{d} t}\left( - m \mu \frac{\vec{r}}{r} \right) 
+\]
+That can be written as,
+\[ 
+    \frac{\mathrm{d} }{\mathrm{d} t} \left( 
+        \left( \vec{p}\times \vec{L} \right) - m \mu \vec{e}_r
+    \right)=0 
+\]
+This ultimately means,
+\[ 
+\vec{p}\times \vec{L} - m \mu \frac{\vec{r}}{r} =  \vec{d}
+\]
+\[ 
+    \boxed{ \left( \vec{p}\times  \vec{L} \right) - m \mu \vec{e}_r = \vec{d}  }
+\]
+Let us fix the sign to positive by flipping the cross product and assuming the constant as $\vec{c}$,
+\[ 
+    \boxed{ \left( \vec{L} \times  \vec{p} \right) + m \mu \vec{e}_r = \vec{c} }
+\]
+This is the Lenz Runge Vector.
+
+The required derivation is done. Next we find how the Ellipse relates to it.
+
+\subsubsection{ Deriving Ellipse equation }
+
+The eccentricity relation can be found if we compute $\vec{c} \cdot  \vec{r}$.
+\[ 
+    \vec{c} \cdot  \vec{r} = \vec{r}\cdot  \left( \vec{p}\times \vec{L} \right) + m \mu r 
+\]
+Now, a vector computation has to be used to find $\vec{r}\cdot  \left( \vec{p}\times \vec{L} \right) $
+using that,
+\[ 
+cr \cos \theta = L^2  -  m \mu r
+\]
+This can be written in the form of ellipse equation,
+\[ 
+c \cos \theta = \frac{L^2}{r} - m \mu \to c \cos \theta + m \mu = \frac{L^2}{r}
+\]
+\[ 
+r = \frac{L^2}{ m \mu + c \cos \theta}
+\]
+\[ 
+    r = \frac{L^2}{m \mu \left( 1 + \frac{c}{m \mu} \cos \theta\right) }
+\]
+Here eccentricity is $e = \frac{c}{\mu m}$, hence, we will rewrite the equation. Now, this orbit will be perfect ellipse if the mass $m_1 = M$, the frame we've been for all this time, is high enough, then $M$ itself won't move. That means that the mass $m_2$ stays in perfet orbit without any outer interference, this means, $\mu = G \left( m_1 + m_2 \right) \approx G M$, hence,
+
+ \[ 
+ c = G M m e 
+ \]
+So, the vector,
+\[ 
+\boxed{\vec{e} = \frac{\vec{L} \times  \vec{v}         }{GM m   } + \vec{e}_r}
+\]
+
+\subsubsection{ What it took me to derive this. }
+Now as we are done let me share this story of pain. I tried computing $\vec{p} \times \vec{L}$ directly. Ignoring $m$, what I kept getting was
+\[ 
+    \vec{p}\times \vec{L} = \vec{r} \left( \dot{r}^2 \right) - \dot{\vec{r}} \left( r \cdot \dot{r} \right) 
+\]
+I started trying to solve $\vec{p} \times  \vec{L}$ at $3:00 \ \text{pm}$ and it's now $8:30 \ \text{pm}$, I think I gave up at $7:20 \ \text{pm}$ and looked solutions according to $\vec{\dot{  p}} \times  \vec{L}$. Thank god I have coffee otherwise this text would not be completed by now. Also, my Terminal Exam is going and I don't want to study or write answers. \footnote{Also, in my place it is averaging $37^{\circ}$ with painful level of humidity, though it started to become cloudy and windy by $5:00 \ \text{pm}$. This is a weather note.}   
+
+Now the moral of the story is if you know how to compute $\vec{p} \times  \vec{L}$ and get $\vec{e}$ from it, then please let me know. 
+
+
+
+\subsection{ Solving using the $\vec{p} \times  \vec{L}$ way}
+\textbf{Ishtiak} pinged me a solution that is cool and does the way I was trying to. Here is the way, so we start with using the $\vec{L}/m$, later we will replace it with the required factor,
+hence what we get is,
+\[ 
+    \vec{h} \times  \dot{\vec{r}} 
+\]
+
+Now, we know $\vec{h}= \vec{r} \times  \dot{\vec{r}}$, hence we should find a for of $\vec{r}$, \textbf{Ishtiak} does this in Cartesian coordinates,
+\[ 
+\vec{r} = \begin{pmatrix}
+x \\ y 
+\end{pmatrix}   
+\]
+$\vec{h}$ is always perpendicular to $\vec{ \dot{r}} $, for this reason, the cross product,
+\[ 
+\vec{h} \times  \dot{\vec{r}} = - | h | \begin{pmatrix}
+\dot{y}\\ \dot{x} 
+\end{pmatrix} 
+\]
+Notice that $ \dot{\vec{r}} = \begin{pmatrix}
+x \\ y 
+\end{pmatrix} 
+$ and here we are using $ \begin{pmatrix}
+\dot{y} \\ \dot{ x} 
+\end{pmatrix} 
+$ this is because the vector $\left( \dot{y}, \dot{x} \right) $ is perpendicular to the velocity $ \dot{\vec{r}}$ as needed by the cross product. 
+
+Now we have to add a vector, say $\vec{A}$, now, we want it to follow this property,
+\[ 
+    \frac{\mathrm{d} }{\mathrm{d} t} \left( \vec{A} - |h| \begin{pmatrix}
+    \dot{y}\\ \dot{x} 
+    \end{pmatrix} 
+     \right) = 0
+\]
+
+This means,
+\[ 
+    \frac{\mathrm{d} \vec{A}}{\mathrm{d} t} = \frac{|h| \left( \ddot{x}^2 + \ddot{y}^2 \right)  ^{\frac{1}{2}} }{ (\ddot{x}^2 + \ddot{y}^2   )^{\frac{1}{2}} }   \begin{pmatrix}
+    \ddot{y} \\ \ddot{x} 
+    \end{pmatrix} 
+\]
+We have forced the term $\left( \ddot{x}^2 + \ddot{y}^2 \right)  ^{\frac{1}{2}} $ in the last case, because,
+\[ 
+    \frac{1}{\left( \ddot{x}^2 + \ddot{y}^2 \right)  ^{\frac{1}{2}} } \begin{pmatrix}
+    \ddot{y} \\ \ddot{x} 
+    \end{pmatrix} 
+\]
+is a unit vector that points perpendicular to $ \ddot{\vec{r}}$ and $\vec{h}$. Check it out this is just $\hat{\theta}$ And the term $(\ddot{x}^2 + \ddot{y}^2) ^{\frac{1}{2}}$  is also the net acceleration magnitude. Henceforth,
+\[ 
+    \ddot{x}^2 + \ddot{y}^2 = \left( \frac{GM}{r^2} \right) ^2
+\]
+Using it all together,
+\[ 
+\frac{\mathrm{d} \vec{A}}{\mathrm{d} t} = |h| \frac{GM}{r^2} \hat{\theta}
+\]
+But check it out, $|h| \hat{\theta} = \omega r^2 \hat{\theta}$, using this, we can write,
+\[ 
+\frac{\mathrm{d} \vec{A}}{\mathrm{d} t} = GM \omega \hat{\theta}
+\]
+A crucial statement applies, \textbf{as $\hat{\theta}$ is the direction of change of $\vec{r}$, and $\omega$ is the angular speed of $\vec{r}$, $\omega \hat{ \theta}$ is the rate of change of $\hat{r}$, thus},
+
+\[ 
+\vec{A} = GM \hat{r}
+\]
+Finally we have, combining each and everything that we found,
+\[
+    \left( \vec{h} \times  \dot{ \vec{r} }  \right) + GM \hat{r}        
+\]
+And this term above is a constant. Factoring things and replacing $\vec{h}$ with $\vec{L}$, it can be shown that the elliticity vector (that is a constant) is,
+\[ 
+    \boxed{ \vec{e} = \frac{\vec{L} \times  \dot{\vec{r}} }{GMm} + \hat{r} }
+\]
+
+
+Now it's a ripe time to state the physics cup problem. 
+
+\pk{ At two different points in an elliptical orbit, a comet has a velocity $\vec{v_1}$ and $\vec{v_2}$ so that, 
+\begin{itemize}
+    \item $|\vec{v_1} | = 2 | \vec{v_2}|$ 
+    \item $\vec{v_1}$ and $\vec{v_2}$ are orthogonal (makes $90^{\circ}$ angle). 
+\end{itemize}
+Find the \textbf{Minimum Possible eccentricity} of  the orbit.  
+}
+\begin{figure}[ht!]
+    \centering
+    \incfig{phocup2}
+    \caption{phocup2: the cyan color vector is $\vec{v}\times \vec{L}$, the blue one is $\vec{e}$}
+    \label{fig:phocup2}
+\end{figure}
+\solu{ 
+{{The LRL equation can be written like,
+\[ 
+\frac{\vec{L} \times \vec{v_1}}{GMm} + \hat{r_1} = 
+\frac{\vec{L} \times  \vec{v_2}}{GMm} + \hat{r_2} = \vec{e}
+\]
+Computing the unit vectors,
+\[ 
+    \hat{r_2} - \hat{r_1} = \frac{1}{GMm} \left( \left( \vec{L}\times \vec{v_1} \right) - 
+    \left( \vec{L} \times \vec{v_2} \right) \right) 
+\]
+Now $\vec{L}\times \vec{v}$ is perpendicular to $\vec{v}$
+Magnitude of the vector on left side,
+\[ 
+L \sqrt{v^2 + 4v^2}  = L v \sqrt{5} 
+\]
+The direction of the vector $\left( \vec{L}\times \vec{v_1} \right) - \left( \vec{L} \times  \vec{v_2} \right) $ is same as $\hat{r_2} - \hat{r_1}$, now, just caring about magnitude,
+\[ 
+    | \hat{r_2} - \hat{r_1}| = 1^2 + 1^2 + 2 \cos\left( \theta_2 - \theta_1 \right) = 2 \left( 1 + \cos \left( \theta_2 - \theta_1 \right)  \right) 
+\]
+In fact we also have,
+\[ 
+r_1 = \frac{r_0}{1 - e \cos \theta_1}
+\]
+\[ 
+r_2 = \frac{r_0}{1 - e \cos \theta_2}
+\]
+And,
+\[ 
+    \frac{1}{2}v_1^2 - \frac{GM}{r_0}\left( 1 - e \cos \theta_1 \right) = \frac{1}{2} v_2^2 
+    - \frac{GM}{r_0} \left( 1 - e \cos \theta_2 \right) 
+\]
+\[ 
+    v_1^2 - v_2^2 = \frac{2GMe}{r_0} \left(   \cos \theta_2    -  \cos \theta_1 \right) 
+\]
+\[ 
+    \frac{3}{2}v^2 \left( \frac{r_0}{GMe} \right) = \cos \theta_2 - \cos \theta_1 
+\]
+\[ 
+    \cos \theta_1 + \frac{3}{2} v^2 \left( \frac{r_0}{GMe} \right) = \cos \theta_2
+\]
+Now, using this in the $\cos \left( \theta_2 - \theta_1 \right) $ equation,
+
+\[ 
+    \cos\left( \theta_2 - \theta_1 \right) = \cos \theta_1 \cos \theta_2 + \sin\theta_1 \sin\theta_2
+\]
+\[ 
+    = \cos \theta_1 \left( \cos \theta_1 + \frac{3}{2}v^2 \left( \frac{r_0}{GMe} \right)  \right) +
+    \sin \theta_1 \left( \sqrt{ 1 - \left( \cos \theta_1 + \frac{3}{2}v^2 \left( \frac{r_0}{GMe} \right)  \right)^2 }  \right) 
+\]
+
+LRL magnitude,
+\[ 
+    2\left( 1 + \cos\left( \theta_2 - \theta_1 \right)  \right) = \frac{\sqrt{5} Lv}{GMm}
+\]
+}}
+
+Let us make the $\vec{e}$ vector so that it points from focus to nearest point on orbit. That vector will look like,
+\[ 
+\vec{e} = \frac{\vec{v} \times  \vec{L}}{ GMm} - \vec{e_r}
+\]
+You can quickly verify by drawing a rough vector referring from the diagram. Now,
+\[ 
+\vec{e} + \vec{e_r} = \frac{\vec{v} \times \vec{L}}{GMm} 
+\]
+Because $\vec{v_1}$ and $\vec{v}_2$ are orthogonal, so will $\vec{v_1}\times \vec{L}$ and $\vec{v_2}\times \vec{L}$, and thus following the above equation, the $\vec{e}+\vec{e_r}$ will  be orthogonal too. 
+
+\[ 
+\vec{e} + \hat{r_1} = \frac{\vec{v_1} \times  \vec{L}}{GMm}
+\]
+\[ 
+\vec{e} + \hat{r_2} = \frac{\vec{v_2} \times  \vec{L}}{GMm}
+\]
+
+Now, using the magnitude of $\vec{v}$ given,
+\[ 
+|\vec{e} + \hat{r_1} |=2 | \vec{e} + \hat{r_2}| 
+\]
+\[ 
+    \left( \vec{e} + \hat{r_1}  \right) - \left( \vec{e} + \hat{r_2} \right)  =0
+\]
+These being perpendicular to each other,
+\[ 
+    0 = \sqrt{ \left( \vec{e}+\hat{r_1} \right)^2 + \left( \vec{e} + \hat{r_2} \right)  ^2} 
+\]
+
+}
+
+\[ 
+E  = mc^2 \frac{1}{x}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

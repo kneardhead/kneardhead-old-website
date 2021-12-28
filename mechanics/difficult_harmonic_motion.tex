@@ -1,0 +1,460 @@
+\documentclass[11pt, a4paper]{memoir}
+\usepackage[sans,book,lightblue,nosecthm]{ahsan}
+
+
+% figure support
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+
+
+\title{Simple Harmonic Motions and \\ Difficult Harmonic Motions}
+\author{Ahmed Saad Sabit}
+\date{\today} 
+
+\usepackage{mathdots}
+\counterwithin{figure}{section}
+
+\begin{document}
+\maketitle
+We'd find the differential equations for free, drag and driven cases, and find out their solutions. We'd use Complex numbers and Euler Equation to do it quickly. 
+\tableofcontents
+\chapter{Simple and Difficult Harmonics}
+\section{ Tools}
+The Euler's equations makes the whole document possible to be written,
+\[ 
+e^{i \theta} = \cos \theta + i \sin \theta
+\]Here, $i = \sqrt{-1} $, the imaginary number. 
+And also remember,
+\[ 
+\frac{\mathrm{d} }{\mathrm{d} x} e^{\alpha x} = \alpha e^{\alpha x}
+\]
+Another notation we'd use often,
+\[ 
+\frac{\mathrm{d} x}{\mathrm{d} t} = \dot{x} \quad \quad \frac{\mathrm{d} ^2 x}{\mathrm{d} t^2} = \ddot{x}
+\]
+I don't know if I would, but if the equations start to look very messy, I would use a short form to denote differentiation.
+\[ 
+    \partial_{ x} f = \frac{\partial f}{\partial x} = \frac{\mathrm{d} f}{\mathrm{d} x} \quad \quad \partial_{ x}^{2} f(x) = \frac{\partial ^2 f(x)}{\partial x^2}
+\]
+Here, $\partial$ symbol is used just for random reasons, don't worry about it for now. 
+
+
+I recommend reading the first part of Chapter 3 from Morin's Classical Mechanics Textbook to have an idea what is differential equation and why would we use it. You don't need to read further, I'd discuss them here quickly.
+
+
+\section{ Simple Harmonic Motions}
+Let there be a spring of spring constant $k$ and there be mass $m$ in outer space where there is no gravity. One end of spring is fixed and another end has mass $m$. If we displace the mass $m$ by $x$ distance, there would be a force, 
+\[ 
+F = - kx
+\]
+$-kx$ because the force points to the opposite direction to $x$. Now, $F = ma$, thus,
+\[ 
+ma = - kx
+\]
+\[ 
+a = - \frac{k}{m} x \to \frac{\mathrm{d} ^2 x}{\mathrm{d} t^2} = -\frac{k}{m} x
+\]
+Here $a = \frac{\mathrm{d} ^2 x}{\mathrm{d} t^2} $ is acceleration. Using shorter notation of $ \ddot{ x} $ instead of $ \frac{\mathrm{d} ^2 x}{\mathrm{d} t^2}$, 
+\[ 
+\boxed{ \ddot{x} + \frac{k}{m} x=0}
+\]
+For certain reasons, (what you'd see quickly) this $\frac{k}{m} = \omega^2$ is actually written as,
+\[ 
+\boxed{ \ddot{x} + \omega^2 x=0}
+\]
+This is the \emph{Differential Equation} of Simple Harmonic Motion, there is a function $x\left( t \right) $ that satifsfies it.  
+
+\subsection{ Try to solve $ \ddot{x} + \omega^2 x = 0$}
+\begin{itemize}
+    \item Let's put $x = t^2$ and see,
+\[ 
+\frac{\mathrm{d} }{\mathrm{d}t } \frac{\mathrm{d} }{\mathrm{d} t} t^2 + \omega^2 t^2 = 0
+\]
+\[ 
+2 + \omega^2 t^2 = 0
+\]
+It doesn't well behave, for one specific value of $t$ this is true, but for any random value of $t$, it doesn't equal to $0$ obviously.
+The solution must hold for all possible ranges of time.
+\item Let's put $x = e^{at}$ and see,
+\[ 
+    \frac{\mathrm{d} ^2}{\mathrm{d} t^2}\left( e^{a t} \right) + \omega^2 e^{a t} \quad
+    \to \quad 
+    a^2 e^{a t} + \omega^2 e^{at} =0
+\]
+Didnt' work, to make this true, we need to force it so that $a^2 = - \omega^2$, that means,
+\[ 
+a = i \omega
+\]
+If this is the case, then, $x = e^{i \omega t}$,
+\[ 
+    \frac{\mathrm{d} ^2}{\mathrm{d} t^2} \left( e^{ i \omega t} \right) + \omega^2 e^{i \omega t} \quad \to \quad i^2 \omega^2 \left( e^{i \omega t} \right) + \omega^2 e^{i \omega t} = 0 \quad 
+    \to 
+    \quad \omega^2 - \omega^2 = 0
+\] This time, for all cases of $t$, this is satisfied. That means this is a perfect solution. 
+
+So we have a solution, 
+\[\boxed{  
+    e^{ i \omega t}} 
+\]
+But just look carefully this is just $\cos \omega t$, because,
+\[ 
+    e^{i \omega t} = \cos \left( \omega t \right) + i \sin \left( \omega t \right) 
+\]
+\item Let's try $x = \cos \omega t$, 
+    \[ 
+        \frac{\mathrm{d} ^2}{\mathrm{d} t^2 }\left( \cos \left( \omega t \right)  \right) + \omega^2 \left( \cos \left( \omega t \right)  \right) = \omega^2 \left( \cos \omega t \right) - \omega^2 \left( \cos \omega t \right)  
+    \]
+    You can check using basic calculus that (chain rule this case) and see this is true. Hence another solution is, 
+    \[ 
+    \boxed{ \cos \omega t}
+    \]
+\end{itemize}
+
+The way we like to write solutions for differential equation here is adding a factor $A$ so that,
+\[ 
+x = A e^{i \omega t}
+\]
+Here $A$ is amplitude (a constant) that can be determined. 
+
+\subsection{ Summary for $ \ddot{x} + \omega^2 x = 0$}
+
+Now what does $x = A \cos \omega t$ mean as a solution for the above differential equation?
+
+Here, any equation that shows what is $ \ddot{x}$ is called \emph{Equation of Motion}. Which is just the Acceleration. From this, we can say that $x$ satisfied the equation for Acceleration, so it's a possible way of motion.
+
+Now, $x = A \cos \omega t$ means, with time the mass $m$ moves left and right, with oscillation. In your text book, you can find many problems regarding it, check them. It's the core part of Oscillation. 
+
+I will not keep further discussions on this matter because it has already been done in University Physics or Halliday, Resnick, Krane. I tend to solve the Difficult Harmonic Motion equations for ya.
+
+If our solution is $Ae^{i \omega t}$, this means the solution is,
+\[ 
+    x = A \cos \left( \omega t \right)  + i A \sin \left( \omega t \right) 
+\]
+The problem here is there is an imaginary part to this equation for $x\left( t \right) $. But don't worry, you only need the real part, whatever has factor $i$, (in this case it is $i \sin \omega t$), you can ignore at the final solution. Only the real part of $x$ (which is $\cos \omega t$) matter. 
+
+
+\section{ Difficult Harmonic Motion}
+
+
+\subsection{ Extra Constant Force: Force Field Oscillation} 
+Let our mass $m$ be always acted on by a force $E$. This force will always push the mass along the same direction, then, total force equation looks like,
+\[ 
+F = - kx + E \to \ddot{x} = -\frac{k}{m}x + \frac{E}{m}
+\]
+We can write this $\frac{E}{m}$ as just $e$ and continue,
+\[ 
+\boxed{ \ddot{x} + \omega^2 x = e}
+\]
+
+\subsection{ Extra Oscillating Force: Forced Oscillation}
+Let us apply a force that changes with time, so that, 
+\[ 
+\boxed{ \ddot{x} + \omega^2 x = F_0 \cos \omega_{ \alpha} t}
+\]
+This problem is also written as,
+\[ 
+\boxed{ \ddot{x} + \omega^2 x = F_0 e^{i \omega_{ \alpha} t}}
+\]
+Here the magnitude of force varies with a angular oscillation of $\omega_{ \alpha}$, which is NOT SAME as $\omega$.
+
+
+
+\subsection{ Drag Force included: Damped Oscillation} 
+Let add a drag force $F = - 2 \kappa v$ for the above system. Keep in mind $v = \dot{x}$. The reason the drag force has been shown with $2 \kappa $ instead of just $\kappa$ is because it makes solving the differential equation little easier. 
+
+But whatever, assume the drag constant $\alpha$ is just $2 \kappa$ for this case. 
+
+Now, the equation of motion,
+\[ 
+F = - 2 \gamma v - k x
+\]
+Using $F = m \ddot{x}$,
+\[ 
+\ddot{x} = - 2 \frac{\kappa }{m} \dot{x} - \frac{k}{m} x    
+\]
+Let us use $\frac{\kappa}{m} = \gamma$ and make our math nice,
+\[ 
+\ddot{x} + 2 \gamma \dot{x} + \omega^2 x = 0
+\]
+So, we now have to find a $x \left( t \right) $ for,
+\[ 
+\boxed{ \ddot{x} + 2 \gamma \dot{x} + \omega^2 x = 0}
+\]
+
+\subsection{ Drag and Extra Oscillating Force both included: General Equation of Oscillation}
+
+For drag for and applied force both together, we have,
+\[ 
+    \boxed{ \ddot{x} + 2 \gamma \dot{x} + \omega^2 x = F_0 e^{i \omega_{ a}t}}
+\]
+
+
+
+\section{ Solutions to Difficult Harmonic Motions}
+\subsection{ Extra Constant Force case: $ \ddot{x} + \omega^2 x = e$}
+We have to solve,
+\[ 
+\boxed{ \ddot{x} + \omega^2 x = e}
+\]
+The method we use for all this cases is the rule of superposition. Check the \textbf{Last} section for an idea.
+
+Let us assume,
+\[ 
+    \boxed{ x = u_{ h} + u_{ p}}
+\]
+Here $u_{ h} $ is called ``\textbf{Homogenous Solution}". And $u_{ p}$ is ``\textbf{Particular Solution}"
+
+Now apply this in the differential equation, we have,
+\[ 
+\ddot{u _{ h}} + \omega^2 u_{ h} + \ddot{u_{ p}} + \omega^2 u_{ p}  = e
+\]
+We can choose whatever value of $u_{ h}$ and $u_{ p}$ as we like, we can engineer it so that it becomes something familiar, let's put that,
+\[ 
+\ddot{u_{ h}} + \omega^2 u_{ h} = 0
+\]
+\[ 
+\ddot{u_{ p}} = 0 \quad \text{and} \quad \omega^2 u_{ p} = e
+\]
+The \textbf{Homogenous Solution} turns out to be well known,
+\[ 
+u_{ h } = A e^{i \omega t}
+\]
+And the \textbf{Particular Solution} is consistent because it says,
+\[ 
+u_{ p} = \frac{e}{\omega^2}
+\] 
+And the second derivative of $u_{ p}$ is zero because $\frac{e}{\omega^2}$ is constant.
+
+So, we have the solution,
+\[ 
+x = u_{ h } + u_{ p} = Ae^{i \omega t} + \frac{e}{\omega^2}
+\]
+\[ 
+    \boxed{ x\left( t \right)  = Ae^{i \omega t} + \frac{e}{\omega^2}}
+\]
+In some places this is also written as,
+\[ 
+    \boxed{ x\left( t \right) = Ae^{i \omega t} + Be^{- i \omega t}  + C}
+\]
+Which is perfectly valid too.
+
+\subsection{ Extra Oscillating Force Case: $ \ddot{x} + \omega^2 x = F_0 e^{i \omega_{ a} t}$} 
+We have to solve,
+\[ 
+\boxed{ \ddot{x } + \omega^2 x = F_0 e^{i \omega_{ \alpha} t}}
+\]
+We'd use the same as before way,
+\[ 
+\boxed{ x = u_{ h} + u_{ p}}
+\]
+Thus, we have,
+\[ 
+\ddot{u_{ h}} + \omega^2 u_{ h} + \ddot{u_{ p}} + \omega^2 u_{ p} = F_0 e^{i \omega_{ \alpha} t}
+\] 
+
+For the \textbf{Homogenous Solution}, 
+\[ 
+    \ddot{u_{ h} } + \omega^2 u_{ h} = 0 \quad \quad \to \quad \quad \boxed{ u_{ h} = Ae^{i \omega t} }
+\]
+For the \textbf{Particular Solution} we have to become little careful,
+\[ 
+\ddot{u_{ p}} + \omega^2 u_{ p} = F_0e^{i \omega_{ \alpha} t}
+\]
+Let us assume that,
+\[ 
+u_{ p} = Be^{i \omega_{ p} t}
+\]
+Please note we have used $\omega_{ p}$, just in case. Now let's put this in the differential equation and check the result,
+\[ 
+    \frac{\mathrm{d} ^2}{\mathrm{d} t^2} Be^{i \omega_{ p} t} + \omega^2 B e^{i \omega_{ p} t} = F_0 e^{i \omega_{ \alpha} t}
+\]
+This becomes,
+\[ 
+    Be^{i \omega_{ p} t } \left( \omega^2 - \omega^2_{ p} \right) = F_0e^{i \omega_{ \alpha} t}
+\]
+Now if $\omega_{ p} = \omega_{ \alpha}$ then, we can factor the $e^{ i \omega_{ \alpha} t} $ from both sides and that becomes valid. 
+
+Also that it has to be the case because two sides can't have different angular frequency $\omega_{ p}$ and $\omega_{ \alpha}$.
+
+So, using $\omega_{ p} = \omega_{ \alpha}$, we can get,
+\[ 
+B = \frac{F_0}{\omega^2 - \omega_{ \alpha}^2} 
+\]
+Good, we are done,
+\[ 
+\boxed{ x = Ae^{i\omega t} + \frac{F_0}{\omega^2 - \omega_{ \alpha}^2} e^{i \omega_{ \alpha} t}}
+\]
+Some books use,
+\[\boxed{  
+x = Ae^{i \omega t} + Be^{- i \omega t} + \frac{F_0}{\omega^2 - \omega_{ \alpha}^2} e^{i \omega_{ \alpha} t}}
+\]
+Which is perfectly fine. 
+
+\subsection{ Drage force case: $ \ddot{x} + 2 \gamma \dot{x} + \omega^2 x = 0$}
+Fun fact I used to be scared of this equation, anyway we have to solve,
+\[ 
+\ddot{x } + 2 \gamma \dot{x} + \omega^2 x = 0
+\]
+
+Looking closely using Homogenous or Particular solution is useless because this linear differential equation is Homogenous itself. But don't worry about this, to solve this, you have to be careful and use a different $\omega$ for solution. 
+
+Assume the solution to be,
+\[ 
+x = Ae^{i \omega_{ k} t}
+\]
+You can try using $Ae^{i \omega t}$ and see it doesn't work for all case. Now, 
+\[ 
+    \frac{\mathrm{d} ^2}{\mathrm{d} t^2} \left( A e^{i \omega_{ k} t} \right) + 
+    2 \gamma \frac{\mathrm{d} }{\mathrm{d} t} \left( A e^{ i \omega_{ k} t} \right) +
+    \omega^2 x = 0
+\]
+We get,
+\[ 
+- \omega_{ k} ^2 + 2 i \gamma \omega_{ k} + \omega^2 = 0
+\]
+Solve for $\omega_{ k}$ here, using the formula for $ax^2 + bx + c =0$,
+\[ 
+x = \frac{- b \pm \sqrt{b^2 - 4ac} }{2a}
+\]
+We get,
+\[ 
+\omega_{ k} = i \gamma \pm i \sqrt{\gamma^2 - \omega^2} 
+\]
+It will be either a plus or minus, or both. How? Check the solution,
+\[ 
+    \boxed{ x = A e^{-\gamma t + t\sqrt{\gamma^2 - \omega^2} } + Be^{- \gamma t - t \sqrt{\gamma^2 - \omega^2} }}
+\]
+Or another form,
+\[ 
+    \boxed{ x = e^{- \gamma t} \left( A e^{-t \sqrt{\gamma^2 - \omega^2} } + Be^{t \sqrt{\gamma^2 - \omega^2} } \right) }
+\]
+But my favorite way to write this is,
+\[ 
+    \boxed{  x = e^{- \gamma t} \left( A \cos \Omega t \right) } \quad \quad \quad \quad \Omega = \sqrt{\gamma^2 - \omega^2} 
+\]
+Which is valid in most of the cases. The reason I like this form because it's very nice when plotted. 
+
+Beware in some cases $\gamma$ is very small with respect to $\omega$ then this equation takes simpler forms or something $\gamma$ is so large that no oscillation takes place (because the oscillation equation becomes completely imaginary and the remaining real part is just of $Ae^{ -\alpha t}$ form).
+
+
+
+
+\subsection{ General Case: Drag and Drive together}
+We have,
+\[ 
+    \boxed{ \ddot{ x} + 2 \gamma \dot{x} + \omega^2 x = F_0 e^{i \omega_{ \alpha} t}}
+\]
+Consider, $u$ for  \textbf{Homogenous solution} and $v$ for particular. Then,
+\[ 
+x = u + v
+\]
+The \textbf{Homgoneous solution},
+\[ 
+\ddot{u} + 2 \gamma \dot{u} + \omega^2 u = 0
+\]
+It's solution is known from the last section. 
+
+The \textbf{Particular Solution}, 
+\[ 
+\ddot{ v} + 2 \gamma \dot{v} + \omega^2 v = F_0e^{i \omega_{ \alpha} t}
+\]
+Let us assume that,
+\[ 
+v = B e^{i \omega_{p} t}
+\]
+Thus, putting this in place, 
+\[ 
+    \left(-\omega_{ p} ^2+ 2 i \gamma \omega_{ p} + \omega^2  \right) Be^{i \omega_{ p} t} = F_0 e^{ i \omega_{ \alpha} t }
+\]
+We need to have $\omega_{ p} = \omega_{ \alpha}$, we end up with,
+\[ 
+    (    - \omega_{ \alpha}^2 + 2 i \gamma \omega_{ \alpha} + \omega^2 )B- F_0 = 0
+\]
+So, we have found a solution, it is,
+\[ 
+    \boxed{ x = e^{- \gamma t} \left( Ae^{ - t \sqrt{\gamma^2 - \omega^2} } + Be^{t \sqrt{\gamma^2 - \omega^2} } \right) + 
+        \left( \frac{F_0}{- \omega_{ \alpha}^2 + 2 i \gamma \omega_{ \alpha} + \omega^2} \right) 
+        e^{ i \omega_{ \alpha} t}
+    }
+\]
+
+We are done with it, but there is this factor with $e^{i \omega_{ \alpha} t}$ which is,
+\[ 
+\frac{F_0}{- \omega_{ \alpha}^2 + 2 i \omega_{ \alpha} \gamma + \omega^2} 
+\]
+which as a $i$ with it, hence turns into a piece that makes the math more interesting (or painful in cases)
+
+This  Factor is in the form of an complex (imaginary plus real) number, we can find it's real part, 
+\[ 
+    \text{Real}\left( \frac{1}{a + ib} \right)  = \frac{a}{a^2 + b^2}
+\]
+Because,
+\[ 
+\frac{1}{a+ib} = \frac{a-ib}{a-ib} \frac{1}{a+ib} = \frac{a}{a^2 + b^2} - \frac{b}{a^2+b^2}i
+\]
+Using this, the real part of the factor is,
+\[ 
+    \frac{F_0 \left( \omega^2 - \omega_{ \alpha}^2 \right) }{\left( \omega^2 - \omega_{ \alpha}^2 \right)^2 + \left( 2 \gamma \omega_{ \alpha} \right)^2 }
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Principle of Superposition}
+
+We know, $A e^{ i \omega t}$ solves $ \ddot{x} + \omega^2 x = 0$. 
+
+
+Now, the question is, can $B e^{i \omega t}$ solve it? Yes obviously. 
+
+Now, the question is will the sum of two valid solutions $A e^{i \omega t}$ and $B e^{i \omega t}$ solve it? Let's check,
+\[ 
+x = Ae^{i \omega t} + B e^{i \omega t}
+\] Hence,
+\[ 
+\frac{\mathrm{d} ^2}{\mathrm{d} t^2} x + \omega^2 x = 
+-\omega^2 Ae^{i\omega t} - \omega^2 B e ^{i \omega t} + 
+\omega^2 A e^{ i \omega t} + \omega^2 Be^{i \omega t } = 0
+\]
+We can see that $x = Ae^{i \omega t} + Be^{i \omega t}$ satisfies $ \ddot{ x} + \omega^2 x = 0$ perfectly. 
+
+This is a demontration of the next theorem.
+
+\theo{}{Theorem of Superposition}{The sum of valid solutions is also a valid solution for Linear Differential Equations. And all the differential equaitons we have found so far in the doucment are linear (those equation that don't have power above $1$). } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

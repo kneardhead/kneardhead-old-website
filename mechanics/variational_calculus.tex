@@ -1,0 +1,397 @@
+\documentclass[a4paper, 11pt,twoside]{memoir}
+%
+\usepackage{amsmath, amssymb}
+\usepackage{tikz}
+% figure suppor$t
+\usepackage{fancyhdr}
+\usepackage[nosecthm,darkblue]{ahsan}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Sabit}
+\fancyhead[RE,LO]{ Physics }
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+
+\title{Variational Calculus, Rediscovering $\pi$, \\ Oscillating Force}
+\author{Ahmed Saad Sabit}
+\date{\today}
+
+\begin{document}
+\maketitle
+\chapter{ Variational Calculus and Euler-Lagrange Equation }
+   Good vibrations with freeball.
+
+
+   Powerful and Elegant. Similar to Differential calculus. Not finding the point that minimizes a function, we now need a function that minimizes another function.
+
+   In 1670 Calculus was made. 
+   1686 Newton publish principia.
+   Starts Classical Mechniacs
+   1696 Solves Brachistochone probelm
+   1733 Euler elaborated the problem. 
+   1743 De Alembert made, reformulates the N2L. More involved.
+   1755 Lagrange made Tautochone problem.
+   (age 19).
+
+        1756 Euler papers on Caclucus of Variations. (Central Point)
+        1788 Mechanic Analytic (Different method on analysis other than newton). Certain problems could be solved in minimization problem.
+        1834 Hamilton's Principle. 
+
+        \section{Motivation}
+        Consider two points $A$ and $B$. Coordinates $(x_1,y_1)$ and $(x_2,y_2)$. Minimize distance is going to be the straight line. 
+
+        But what would be the shape of the chain that hung between the point? the shape will miinimizes the potential energy? Like, what is the shape of the trajectory in a $g$ field moving betwee $A$ and $B$ that will minimize the time taken from $A$ to $B$?
+
+        Idea is finding a path that will miinimizes a function. Path is kind of a function it self. We nened point in Differential, here we need path. 
+
+        \subsection{Minimize the distance}
+        \[ 
+        I = \int_{A}^{B} \mathrm{d} S = \int_{x_1}^{x_2}  \sqrt{1 + y'^2}  \mathrm{d}  x   
+        \] 
+
+        \subsection{Brachistocrhome}
+        \[ 
+            I = \int_{A}^{B} \left(  \frac{1 + y'^2}{2g (y_0 - y)} \right)^{\frac{1}{2}} \mathrm{d} x  
+        \] 
+        \subsection{Caternary Problem}
+        Rope shape problem.
+        \[ 
+        I = \int_{x_1}^{x_2} \rho A g y \mathrm{d} S = \rho A \int_{x_1}^{x_2} y \sqrt{1 + y'^2}  \mathrm{d}  x   
+        \]
+        \[ 
+        l = \int_{xc_1}^{x_2} \sqrt{1 + y'^2}  \mathrm{d}  x 
+        \] this is the constraint 
+        \subsection{Lagrangain}
+        MInimize the lagrangian. This is the difference between the kinetic and energy potential. A system will follow the path of stationary points, that minimizes the lagrangain. 
+        \[ 
+            I = \int_{x_1}^{x_2} L [x,y,y'] \mathrm{d}  x 
+        \] $I$ is a functional.
+
+        \subsection{Derivation}
+
+        Let us try to find the optimal path between $x_1,y_1$ and $x_2, y_2$, let us call $y(x)$ is an optimal path. Let there be another arbritrary path $n(x)$ is a random function that goes form one to another point. We can scale it using $\epsilon \nu(x)$. Here \[ 
+            \nu(x)
+        \] is a shape function and $\epsilon$ is a scale. So we can say a path,
+        \[ 
+            \overline{y(x)} = y(x) + \epsilon \nu(x)
+        \] 
+        All is continuours. $\nu$ is arbitrary variation that satisfies the boundary. And, 
+        \[ 
+            \nu(x_1) = \nu(x_2)=0
+        \] And, 
+        \[ 
+            \overline{y(x)'} = y'(x) + \epsilon \nu(x)'
+        \]This is similar to the differential calculus one where we consider $x+\mathrm{d} x$. Variation is like a like a differential, it's $\overline{y(x)}$.  
+        \[ 
+            I = \int_{x_1}^{x_2}  F[x,y,y'] \mathrm{d}  x 
+        \] 
+\begin{figure}[ht!]
+    \centering
+    \incfig{variation}
+    \caption{variation}
+    \label{fig:variation}
+\end{figure}
+        Here is the foundational principle, which is that, if $y(x)$ is the stationary path, and some other path $\overline{y(x)} = y(x) + \epsilon \nu(x)$ is another variation (other than the stationary) then, if $\epsilon \to 0$, then $\overline{y(X)}$ will start to become the stationary path, so, given that, 
+        \[ 
+            \lim_{\epsilon \to 0} \frac{\mathrm{d} I}{\mathrm{d} \epsilon} = 0
+        \] 
+\[ 
+    \frac{\mathrm{d} }{\mathrm{d} \epsilon} \int_{x_1}^{x_2} F[x,\overline{y},\overline{y'} ] \mathrm{d}  x = 0
+\] Leibniz rule,
+\[ 
+    \int_{x_1}^{x_1} \frac{\mathrm{d} }{\mathrm{d} \epsilon} \left( F[x,\overline{y},\overline{y'}] \right) \mathrm{d} x = 0 
+\] 
+This solves,
+\[ 
+    \int_{x_1}^{x_2} \left( 
+\frac{\mathrm{d} F}{\mathrm{d} x} \cdot \frac{\mathrm{d} x}{\mathrm{d} \epsilon} + \frac{\mathrm{d} F}{\mathrm{d} \overline{y}} \cdot  \frac{\mathrm{d} \overline{y}}{\mathrm{d} \epsilon} + \frac{\mathrm{d} F}{\mathrm{d} \overline{y'}}\cdot  \frac{\mathrm{d} F}{\mathrm{d} \epsilon} 
+    \right) = 0 
+\]
+\[ 
+    \frac{\mathrm{d} \overline{y}}{\mathrm{d} \epsilon} = \nu(x)
+\] 
+\[ 
+    \frac{\mathrm{d} \overline{y'}}{\mathrm{d} \epsilon} = \nu'(x)
+\] 
+\[ 
+\int_{x_1}^{x_1}  
+\left( 
+\frac{\mathrm{d} F}{\mathrm{d} } \cdot  \nu + \frac{\mathrm{d} F }{\mathrm{d} \overline{y'}} \cdot \nu'  
+\right) \mathrm{d} x = 0 \quad (\epsilon \to 0) 
+\] 
+        $\epsilon \nu(x)$ is a variation of the optimal $y(x)$ path. 
+\[ 
+\epsilon = 0, \overline{y} = y, \overline{y'} = y'
+\]
+\[ 
+    \int_{x_1}^{x_2} \left( \frac{\mathrm{d} F}{\mathrm{d} y} \cdot \nu + \frac{\mathrm{d} F}{\mathrm{d} y'} \nu'  \right)  = 0
+\] This is the weak form because there is this $\nu$ left. We need to integrate in parts,
+\[ 
+\int_{ a }^{b}  u \mathrm{d}  v = vu|_a^b - \int_{a}^{b} v \mathrm{d}  u  
+\]
+\[ 
+    \frac{\mathrm{d} F}{\mathrm{d} y'} \nu |_a^b + \int_{x_1}^{x_2}  \left( \frac{\mathrm{d} F}{\mathrm{d} y} - \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right)  \right) \nu \mathrm{d} x = 0 
+\] From the equation we talked about before,  the first term is zero,
+\[ 
+\frac{\mathrm{d} F}{\mathrm{d} y'} \nu|_a^b = 0
+\]
+But it is given that $\nu$ is arbitrary, and doesnt change with time, is fixed, but choosed randomly, means that $\frac{\mathrm{d} F}{\mathrm{d} y} - \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right)  = 0$.
+
+This means, that,
+\[ 
+    \frac{\mathrm{d} F}{\mathrm{d} y } - \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right)  = 0
+\]
+
+\textbf{Problem, I don't understand the last part, let us expand that and see what is it}, 
+So because we have $\frac{\mathrm{d} F}{\mathrm{d} y'} \nu |_a^b = 0$, we are left with the integral,
+\[ 
+    \int_{x_1}^{x_2} \left( \frac{\mathrm{d} F}{\mathrm{d} y} - \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right)  \right) \nu \mathrm{d}  x = 0 
+\] Now, Let us integrate them separately,  
+\[ 
+\int_{x_1}^{x_2} \mathrm{d}  x \frac{\mathrm{d} F}{\mathrm{d} y} \nu - 
+\int_{x_1}^{x_2} \mathrm{d} x \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right) \nu  = 0 
+\] 
+So this just means, okay problem solved,
+\begin{align*}
+    \int_{x_1}^{x_2} \frac{\mathrm{d} F}{\mathrm{d} y} \mathrm{d} x &= \int_{x_1}^{x_2} \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right)   \\
+    \frac{\mathrm{d} F}{\mathrm{d} y} &= \frac{\mathrm{d} }{\mathrm{d} x} \left( \frac{\mathrm{d} F}{\mathrm{d} y'} \right) 
+\end{align*}
+
+\section{Final Thoughts}
+
+In many cases we want to minimize a path (funtion) that goes from $A(x_1,y_1)$ and $B(x_2,y_2)$. So, let the $y(x)$ path be the optimal path, that minimizes a quantity. So, a path, that is not optimal, is going to vary by, say another path,
+\[ 
+    \overline{y(x)} = y(x) + \epsilon \nu(x)
+\] Here $\nu(x)$ is an arbitrary funciton (or path) that varies from $y(x)$ making another path $\overline{y(x)}$. And $\epsilon$ is required scale factor. Now, we need the boundary conditions,
+\[ 
+    \nu(x_1) = \nu(x_2) = 0 
+\] This integral $I$ has to be minimized, 
+\[ 
+    I = \int_{x_1}^{x_2}  F[x,y,y'] \mathrm{d} x  
+\] This integral can be time $t$ for the Brachistochrone, or the potential energy of a rope, that has to be minimized for a given $y(x)$. In first case of Brachistochrone, \[ 
+y(x) \to \text{Ramp Shape}
+\] And in hannging rope problem,
+\[ 
+    y(x) \to \text{Potential Energy}
+\]
+Solving the math, we find that the optimal function $F$ by minimizing $I$ satisfies, 
+\[ 
+\frac{\partial }{\partial x} \frac{\mathrm{d} F}{\mathrm{d} y'} = \frac{\mathrm{d} F }{\mathrm{d} y}
+\]
+Where we know that, $y(x)$ is a variable of the function $F$. 
+
+\chapter{ The Newtonian $\pi$ }
+
+ The circumference of a circle is,
+    \[ 
+    S = 2\pi r
+    \] The area of circle is,
+    \[ 
+    A = \pi r^2
+    \]
+    \section{ Derivation of Area }
+Consider a thin ring of radius $r$ and it has a width $\mathrm{d}  r$, hence the small area integrated from $r=0$ to $r=R$,
+\[ 
+A = \int_{0}^{R} \mathrm{d} r \ 2 \pi r = \pi R^2 
+\]
+
+    \section{ Calculate Pi }
+    Take a hexagon with side $1$, cut into 6 equilateral traingle. The circumference of the bouadry circle of the Hexagon is greater than the total length of 6 sides of Hexagons. The radius of the circle is $r=1$, so circumference of the circle is $S = 2 \pi$. The perimeter of the Hexagon (inside the circle) is 6, so,
+    \[ 
+    6 < \pi \times  2 \to \pi > 3
+    \] 
+    Now consider a square that surrounds the circle, it's perimeter is 8, and similarly,
+    \[ 
+    8 > \pi 2 \to \pi < 4
+    \] 
+    So, \[ 
+    3 > \pi > 4
+    \]This was known for a thousand of years. 
+
+    Now break the Hexagon in Decagon, and make the outside square into a greater n-gon. Using  this the pi can found. Using this $\pi$ could be found till 4 decimal places. Its now a matter of muscle power. This was how it was  for 2000 years. 
+
+        Archimdes worked for around 96-gons, and Francois Viete later for a 393,216 sides polygon. Then Ludolph van Ceulen worked on polygon with $2^{62}$ sides,
+        \[ 
+        2^{62}=4,611,686,018.427,387,904
+        \]
+        It was an astonishinly large calculation spanning over 25 years. That gave 35 correct decimal places. 
+
+        Then came Issac Newton.
+
+        \section{ Newtons Rule }
+        During Bubonic plage quarantine Newton Played with expressions,
+        \[ 
+            (1+x)^2 = 1 + 2x + x^2
+        \]
+        \[ 
+            \left( 1+ x^3 \right) = \left( 1+x \right) \left( 1 + 2x + x^2 \right) =1 + 3x +3x^2 + x^3
+        \]
+        There is pattern which is the \emph{Pascal's Triangle}. 
+
+        Pascal's Triangle can be used for finding the Coefficient's for expressions with any power $n$ which is for positive integers. 
+
+        \[ 
+            \left( 1+ x \right) ^{n} = 1 + nx + \frac{n \left( n - 1 \right) }{2!} x^2  + \frac{n \left( n-1 \right) \left( n-2 \right) }{3!} x^3 + \ldots
+        \]
+
+        That is the Binomial theorem.
+        \[ 
+            (1+x)^{ n } = \sum \binom{ n }{ m } x^m
+        \]
+
+        Newton broke the rule of $n$ being integer. We can apply the theorem for $n$ NOT being an integer.
+        \[ 
+            (1+x)^{ -1 } = 1 - 1x + 1x^2 - 1x^3 + 1x^{4}+ \ldots
+        \]
+    
+
+        This becomes infinite series. The math works, and acts like what we have seen in  Taylor's series. It is justified if $\left( 1+x \right) $ is multiplied with the series.
+        This can be used to extend the Pascals triangle before the top node. And can be done in the $-\infty$, the negetive part looks like the pascal's triangle rothated.
+
+        We can exted this to,
+        \[ 
+            \left( 1 + x \right) ^{\frac{1}{2}} = \sqrt{1 + x} 
+        \]
+        This gives a series too. But between $0$ and $1$ there is infinite continuum of numbers making the Pascal's Triangle Continuous. Using this, square roots can be found.
+
+        We are definitely interested in $n = \frac{1}{2} $. Because of the parametric Equation of the circle.
+
+        \section{ Circle introduced }
+        The equation that makes a circle is,
+        \[ 
+        x^2 + y^2  = 1
+        \]And, 
+        \[ 
+            y = \left( 1 - x^2 \right) ^{\frac{1}{2}}
+        \] This is the same expression where $x$ has to be replaced with $x^2$, but this gives,
+        \[ 
+            (1-x^2)^{\frac{1}{2} }= 1 - \frac{1}{2} x^2 - \frac{1}{8}x^{4} - \frac{1}{16}x^{6} + \ldots
+        \]
+
+        Now the area of the one fourth of a circle is just,
+    \[ 
+        A = \int_{0}^{1} y(x) \mathrm{d} x = \int_{0}^{1} (1-x^2)^{\frac{1}{2}} \mathrm{d}  x   
+    \]
+    As used, area of the full circle is $\pi r^2 = \pi$ given $r =1$, hence, 
+    \[ 
+        \frac{\pi}{4} = \int_{0}^{1} \left( 1 - x^2 \right) ^{\frac{1}{2}} \mathrm{d} x 
+    \]
+    
+        But using the series,
+        \[ 
+        \frac{\pi}{4} = \int_{0}^{1}   
+1 - \frac{1}{2} x^2 - \frac{1}{8}x^{4} - \frac{1}{16}x^{6} + \ldots
+\ \mathrm{d}  x
+        \]
+            Now this can be evaluated directly, but this doesn't shrink as quick as  the next small addition. 
+
+            \section{ Limits not $0 \to 1$ but $0 \to \frac{1}{2}$ }
+
+            If the limit is set to integrate from $0$ to $\frac{1}{2}$, then we can get the series to shrink quickly. \emph{This can be understood fiddling around with the series a little more}. 
+\begin{figure}[ht]
+    \centering
+    \incfig{newton's-circle}
+    \caption{Newton's Circle}
+    \label{fig:newton's-circle}
+\end{figure}
+            Hence, $x=0$ to $x=\frac{1}{2} $, the region of the cirle can be thought to be a  sector and a triangle. The sector has an area $\frac{1}{12} \pi$ that can calculated by using geometry and the other part is a triangle with area $\sqrt{3}/8$, using this pi can be calculated using just a few first terms, 
+            \[ 
+                \pi = 12 \left( 
+                    \frac{1}{2} - \frac{1}{2} \frac{1}{2} \left( \frac{1}{2} \right) ^3 - \frac{1}{8} \frac{1}{5} \left( \frac{1}{2} \right) ^{5} - \ldots - \frac{\sqrt{3} }{8}
+                \right) 
+            \] 
+
+    \section{ The series for $\pi$ }
+    Using the integral over there the function that give $\frac{\pi}{4}$ can be found, which is the series.  
+
+
+    \chapter{ Forced Vibrations }
+    \begin{figure}[ht]
+    \centering
+    \incfig{forcedspringsystemdiagram}
+    \caption{Forcedspringsystemdiagram}
+    \label{fig:forcedspringsystemdiagram}
+\end{figure}
+
+A non constant force is being applied on the mass. The equations of motion,
+\[
+    m \ddot{x}(t) + k x(t) = F_0 \cos \omega t
+\]
+So, combination of the homogenous and particular solution,
+\[
+    x(t) = x_h (t)  + x_p(t)
+\]
+\section{ Homogenous solution }
+Homogenous is transient or steady state solution. For homogenius, we assume a free vibration problem. So,the \textbf{Homogenous Solutioin}
+\[
+    m \ddot{x}(t) + kx = 0
+\]
+Solution,
+\[
+    x(t) = C_1 \cos \omega_n t + C_2 \sin \omega_n t
+\]
+\[
+\omega_n = \sqrt{\frac{k}{m}}
+\]
+\section{  Particular Solution       }
+{ this is a particule soution }.
+\textbf{Particular Solution}, method of undetermined coefficients, for oscillating force,
+\[
+    x(t)_p = d_1 \cos \omega_p t + d_2 \sin \omega_p t
+\]
+\[
+    \dot{x} (t)_p = -\omega_p d_1 \sin \omega_p t + \omega_p d_2 \cos \omega_p t
+\]
+\[
+    \ddot{x}_p (t) = -\omega_p^2 d_1 \cos \omega_p t - \omega_p ^2 d_2 \sin \omega_p t
+\]
+Substitute, the equations, we get, putting $ \ddot{x}$, $ \dot{x} $ in the general $x(t)$,
+\[
+    d_1 (k_1 - \omega_p^2 m ) \cos \omega_p t + d_2 ( k - \omega^2 _p m ) \sin \omega_p t = F_0 \cos \omega t
+\]
+Note that, for some mathematical reason $\omega_p = \omega$ that is the oscillation of the force.
+
+Now, looking at the last equations,
+\[
+    d_2 \left( k - \omega^2 m \right) = 0 \to d_2 = 0
+\]
+\[
+    d_1 \left( k - \omega^2 m  \right) = F_0
+\]
+This means, that,
+\[
+d_1 = \frac{F_0}{k - \omega ^2 m}
+\]
+Hence,
+\[
+    x_p (t) = \frac{F_0}{k - \omega^2 m} \ \cos \omega t
+\]
+So the solution ot $x(t)$,
+\[
+    x(t) = C_1 \cos \omega_n t + C_2 \sin \omega _n t + \frac{F_0}{k - \omega^2 m} \cos \omega t
+\]
+Now, what if $\omega_n = \omega$? If this is true,
+\begin{figure}[ht]
+    \centering
+    \incfig{dynamicsinstab}
+    \caption{dynamicsinstab}
+    \label{fig:dynamicsinstab}
+\end{figure}
+
+
+
+        
+\end{document}
