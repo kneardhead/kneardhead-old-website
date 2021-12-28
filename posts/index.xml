@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on kneardhead</title>
+    
+    
+    
+    <link>http://kneardhead.github.io/posts/</link>
+    <description>Recent content in Posts on kneardhead</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Dec 2021 11:44:04 +0600</lastBuildDate>
+    
+	<atom:link href="http://kneardhead.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First</title>
+      <link>http://kneardhead.github.io/posts/first/</link>
+      <pubDate>Tue, 28 Dec 2021 11:44:04 +0600</pubDate>
+      
+      <guid>http://kneardhead.github.io/posts/first/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          This is some code or text, whatever.
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>
