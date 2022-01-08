@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.9.4)  22 NOV 2021 22:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.9.4)  8 JAN 2022 13:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -15,12 +15,6 @@ Type  H <return>  for immediate help.
                                                   
 l.1 -
      --
-?  X
-Type <return> to proceed, S to scroll future error messages,
-R to run without stopping, Q to run quietly,
-I to insert something, E to edit your file,
-1 or ... or 9 to ignore the next 1 to 9 tokens of input,
-H for help, X to quit.
 ? X
  
 Here is how much of TeX's memory you used:
